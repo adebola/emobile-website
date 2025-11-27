@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emobile Specialist Hospital - Website Theme Options</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .header-logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #E31B23, #ff5a5f);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(227, 27, 35, 0.3);
+        }
+
+        .header-logo-icon svg {
+            width: 35px;
+            height: 35px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .themes-count {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .theme-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 100px rgba(0, 0, 0, 0.3);
+        }
+
+        .theme-preview {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+            border-bottom: 1px solid #eee;
+            background: #f5f5f5;
+        }
+
+        .theme-preview iframe {
+            width: 200%;
+            height: 200%;
+            transform: scale(0.5);
+            transform-origin: top left;
+            border: none;
+            pointer-events: none;
+        }
+
+        .theme-preview-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.1) 100%);
+        }
+
+        .theme-info {
+            padding: 25px;
+        }
+
+        .theme-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .theme-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-warm {
+            background: #FFE4E1;
+            color: #E31B23;
+        }
+
+        .badge-modern {
+            background: #E3F4FC;
+            color: #00A3E0;
+        }
+
+        .badge-luxury {
+            background: #FDF6E3;
+            color: #B8860B;
+        }
+
+        .badge-vibrant {
+            background: #F3E8FF;
+            color: #8B5CF6;
+        }
+
+        .badge-minimal {
+            background: #F0FDF4;
+            color: #22C55E;
+        }
+
+        .theme-number {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #999;
+        }
+
+        .theme-info h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .theme-info p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .color-swatch {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .theme-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
+
+        .theme-feature {
+            padding: 5px 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            color: #555;
+        }
+
+        .theme-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #E31B23, #ff4d52);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 8px 25px rgba(227, 27, 35, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .summary {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .summary h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        .summary > p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        .summary-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            min-width: 800px;
+        }
+
+        .summary-table th,
+        .summary-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-table th {
+            background: #f9f9f9;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #333;
+            white-space: nowrap;
+        }
+
+        .summary-table td {
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .summary-table th:first-child,
+        .summary-table td:first-child {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .check {
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .themes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .theme-preview {
+                height: 220px;
+            }
+
+            .summary {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-logo">
+                <div class="header-logo-icon">
+                    <svg viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5 3C11 3 6 8 6 14C6 20 11 28 17.5 33C24 28 29 20 29 14C29 8 24 3 17.5 3Z" stroke="white" stroke-width="2" fill="none"/>
+                        <ellipse cx="17.5" cy="14" rx="4" ry="5" stroke="white" stroke-width="1.5"/>
+                        <path d="M10 26C13 29 15.5 30 17.5 31C19.5 30 22 29 25 26" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+            <h1>Emobile Specialist Hospital</h1>
+            <p>Choose your preferred website theme. Each design is fully responsive, mobile-friendly, and optimized for your healthcare brand.</p>
+            <div class="themes-count">🎨 5 Unique Themes Available</div>
+        </div>
+
+        <div class="themes-grid">
+            <!-- Theme 1: Warm & Nurturing -->
+            <div class="theme-card">
+                <div class="theme-preview">
+                    <iframe src="theme1-warm-nurturing.html" loading="lazy"></iframe>
+                    <div class="theme-preview-overlay"></div>
+                </div>
+                <div class="theme-info">
+                    <div class="theme-header">
+                        <span class="theme-badge badge-warm">Recommended</span>
+                        <span class="theme-number">Theme 01</span>
+                    </div>
+                    <h3>Warm & Nurturing</h3>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #E31B23;"></div>
+                        <div class="color-swatch" style="background: #00A3E0;"></div>
+                        <div class="color-swatch" style="background: #FFE4E1;"></div>
+                        <div class="color-swatch" style="background: #E3F4FC;"></div>
+                        <div class="color-swatch" style="background: #FFFCFA;"></div>
+                    </div>
+                    <p>Soft, welcoming design with gentle curves and warm tones. Perfect for family-oriented fertility services.</p>
+                    <div class="theme-features">
+                        <span class="theme-feature">Soft Gradients</span>
+                        <span class="theme-feature">Floating Elements</span>
+                        <span class="theme-feature">Rounded Corners</span>
+                    </div>
+                    <div class="theme-actions">
+                        <a href="theme1-warm-nurturing.html" target="_blank" class="btn btn-primary">View Theme</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme 2: Modern Clinical -->
+            <div class="theme-card">
+                <div class="theme-preview">
+                    <iframe src="theme2-modern-clinical.html" loading="lazy"></iframe>
+                    <div class="theme-preview-overlay"></div>
+                </div>
+                <div class="theme-info">
+                    <div class="theme-header">
+                        <span class="theme-badge badge-modern">Professional</span>
+                        <span class="theme-number">Theme 02</span>
+                    </div>
+                    <h3>Modern Clinical</h3>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #E31B23;"></div>
+                        <div class="color-swatch" style="background: #00A3E0;"></div>
+                        <div class="color-swatch" style="background: #212529;"></div>
+                        <div class="color-swatch" style="background: #F8FAFB;"></div>
+                        <div class="color-swatch" style="background: #FFFFFF;"></div>
+                    </div>
+                    <p>Clean, professional design with sharp lines. Inspires trust and conveys medical expertise.</p>
+                    <div class="theme-features">
+                        <span class="theme-feature">Clean Lines</span>
+                        <span class="theme-feature">Grid Layout</span>
+                        <span class="theme-feature">Top Info Bar</span>
+                    </div>
+                    <div class="theme-actions">
+                        <a href="theme2-modern-clinical.html" target="_blank" class="btn btn-primary">View Theme</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme 3: Premium Luxury -->
+            <div class="theme-card">
+                <div class="theme-preview">
+                    <iframe src="theme3-premium-luxury.html" loading="lazy"></iframe>
+                    <div class="theme-preview-overlay"></div>
+                </div>
+                <div class="theme-info">
+                    <div class="theme-header">
+                        <span class="theme-badge badge-luxury">Exclusive</span>
+                        <span class="theme-number">Theme 03</span>
+                    </div>
+                    <h3>Premium Luxury</h3>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #C41E24;"></div>
+                        <div class="color-swatch" style="background: #0091C7;"></div>
+                        <div class="color-swatch" style="background: #C9A962;"></div>
+                        <div class="color-swatch" style="background: #1A1A1A;"></div>
+                        <div class="color-swatch" style="background: #FBF9F6;"></div>
+                    </div>
+                    <p>Elegant, sophisticated design with dark tones and gold accents for premium positioning.</p>
+                    <div class="theme-features">
+                        <span class="theme-feature">Dark Theme</span>
+                        <span class="theme-feature">Gold Accents</span>
+                        <span class="theme-feature">Serif Fonts</span>
+                    </div>
+                    <div class="theme-actions">
+                        <a href="theme3-premium-luxury.html" target="_blank" class="btn btn-primary">View Theme</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme 4: Fresh & Vibrant -->
+            <div class="theme-card">
+                <div class="theme-preview">
+                    <iframe src="theme4-fresh-vibrant.html" loading="lazy"></iframe>
+                    <div class="theme-preview-overlay"></div>
+                </div>
+                <div class="theme-info">
+                    <div class="theme-header">
+                        <span class="theme-badge badge-vibrant">Energetic</span>
+                        <span class="theme-number">Theme 04</span>
+                    </div>
+                    <h3>Fresh & Vibrant</h3>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #E31B23;"></div>
+                        <div class="color-swatch" style="background: #00A3E0;"></div>
+                        <div class="color-swatch" style="background: #8B5CF6;"></div>
+                        <div class="color-swatch" style="background: #FAFBFC;"></div>
+                        <div class="color-swatch" style="background: #111827;"></div>
+                    </div>
+                    <p>Bright, energetic design with bold gradients and dynamic animated elements.</p>
+                    <div class="theme-features">
+                        <span class="theme-feature">Bold Gradients</span>
+                        <span class="theme-feature">Animated Blobs</span>
+                        <span class="theme-feature">Modern Sans</span>
+                    </div>
+                    <div class="theme-actions">
+                        <a href="theme4-fresh-vibrant.html" target="_blank" class="btn btn-primary">View Theme</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme 5: Minimalist Zen -->
+            <div class="theme-card">
+                <div class="theme-preview">
+                    <iframe src="theme5-minimalist-zen.html" loading="lazy"></iframe>
+                    <div class="theme-preview-overlay"></div>
+                </div>
+                <div class="theme-info">
+                    <div class="theme-header">
+                        <span class="theme-badge badge-minimal">Elegant</span>
+                        <span class="theme-number">Theme 05</span>
+                    </div>
+                    <h3>Minimalist Zen</h3>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #E31B23;"></div>
+                        <div class="color-swatch" style="background: #00A3E0;"></div>
+                        <div class="color-swatch" style="background: #111827;"></div>
+                        <div class="color-swatch" style="background: #F7F7F7;"></div>
+                        <div class="color-swatch" style="background: #FFFFFF;"></div>
+                    </div>
+                    <p>Calm, serene design with generous whitespace and subtle elegance. Timeless and refined.</p>
+                    <div class="theme-features">
+                        <span class="theme-feature">Clean Layout</span>
+                        <span class="theme-feature">Serif Headers</span>
+                        <span class="theme-feature">Whitespace</span>
+                    </div>
+                    <div class="theme-actions">
+                        <a href="theme5-minimalist-zen.html" target="_blank" class="btn btn-primary">View Theme</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="summary">
+            <h2>📊 Theme Comparison</h2>
+            <p>All themes include responsive design, contact forms, service sections, and are built with your brand colors.</p>
+            <div class="summary-table-wrapper">
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Warm & Nurturing</th>
+                            <th>Modern Clinical</th>
+                            <th>Premium Luxury</th>
+                            <th>Fresh & Vibrant</th>
+                            <th>Minimalist Zen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Overall Feel</td>
+                            <td>Friendly & Caring</td>
+                            <td>Professional</td>
+                            <td>Sophisticated</td>
+                            <td>Energetic & Bold</td>
+                            <td>Calm & Refined</td>
+                        </tr>
+                        <tr>
+                            <td>Best For</td>
+                            <td>Family patients</td>
+                            <td>Credibility</td>
+                            <td>High-end positioning</td>
+                            <td>Modern appeal</td>
+                            <td>Timeless elegance</td>
+                        </tr>
+                        <tr>
+                            <td>Color Scheme</td>
+                            <td>Soft pastels</td>
+                            <td>Clean whites</td>
+                            <td>Dark + gold</td>
+                            <td>Bold gradients</td>
+                            <td>Neutral tones</td>
+                        </tr>
+                        <tr>
+                            <td>Typography</td>
+                            <td>Elegant serif</td>
+                            <td>Modern sans</td>
+                            <td>Classic serif</td>
+                            <td>Bold sans</td>
+                            <td>Refined serif</td>
+                        </tr>
+                        <tr>
+                            <td>Animations</td>
+                            <td>Floating elements</td>
+                            <td>Subtle hovers</td>
+                            <td>Elegant reveals</td>
+                            <td>Animated blobs</td>
+                            <td>Minimal</td>
+                        </tr>
+                        <tr>
+                            <td>Mobile Responsive</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Contact Form</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Services Section</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Testimonials</td>
+                            <td class="check">✓</td>
+                            <td>—</td>
+                            <td class="check">✓</td>
+                            <td>—</td>
+                            <td class="check">✓</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p>💡 Click "View Theme" to see the full interactive website. All themes can be customized further upon selection.</p>
+        </div>
+    </div>
+</body>
+</html>

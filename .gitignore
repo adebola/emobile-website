@@ -1,0 +1,25 @@
+# IDE
+.idea/
+.vscode/
+public/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Firebase
+.firebase/
+.firebaserc
+
+# Claude
+.claude/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Node (if added later)
+node_modules/

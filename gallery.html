@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Stories - Emobile Babies Gallery</title>
+    <meta name="description" content="Celebrate our success stories! View photos of precious babies born through Emobile Specialist Hospital's fertility treatments.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/images/favicon/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/favicon/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon.png">
+
+    <style>
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay-text {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            line-height: 1;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 3rem;
+            padding: 20px 25px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .lightbox-prev {
+            left: 30px;
+        }
+
+        .lightbox-next {
+            right: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating shapes background -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="assets/images/logo/emobile-logo.png" alt="Emobile Specialist Hospital Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="logo-text">
+                    <span>Emobile</span>
+                    <span>Specialist Hospital</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="foundation.html">The ECI Foundation</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <a href="appointment.html" class="cta-btn">Make An Appointment</a>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section style="min-height: 50vh; display: flex; align-items: center; justify-content: center; padding: 150px 40px 80px; text-align: center; background: linear-gradient(135deg, var(--rose-blush), var(--sky-soft));">
+        <div>
+            <div style="width: 120px; height: 120px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; font-size: 4rem;">👶</div>
+            <h1 style="font-size: 4rem; margin-bottom: 20px; color: var(--text-dark);">Emobile Babies</h1>
+            <p style="color: var(--text-dark); font-size: 1.3rem; max-width: 800px; margin: 0 auto;">Our Greatest Joy - Celebrating the precious lives we've helped bring into the world</p>
+        </div>
+    </section>
+
+    <!-- Success Stories Introduction -->
+    <section style="padding: 80px 40px; background: var(--warm-white);">
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 3rem; margin-bottom: 25px;">Success Stories That Inspire Us</h2>
+            <p style="color: var(--text-muted); font-size: 1.2rem; line-height: 1.9; margin-bottom: 40px;">Every baby born through our care represents a journey of hope, perseverance, and love. These precious little ones are a testament to the dedication of our medical team and the strength of the families we serve. We are honored to have played a part in these beautiful stories.</p>
+            <div style="background: linear-gradient(135deg, var(--blue-primary), var(--blue-light)); padding: 50px; border-radius: 25px;">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: white; margin-bottom: 10px;">1000+</div>
+                        <div style="color: rgba(255, 255, 255, 0.95); font-size: 1.1rem;">Happy Families</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 3.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: white; margin-bottom: 10px;">15+</div>
+                        <div style="color: rgba(255, 255, 255, 0.95); font-size: 1.1rem;">Years of Excellence</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 3.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: white; margin-bottom: 10px;">High</div>
+                        <div style="color: rgba(255, 255, 255, 0.95); font-size: 1.1rem;">Success Rates</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section style="padding: 80px 40px 120px; background: var(--cream);">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 50px; text-align: center;">Our Precious Miracles</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox(0)">
+                    <img src="assets/images/gallery/babies/baby-01.jpeg" alt="Emobile Baby Success Story 1">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">💝 Precious Miracle</div>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(1)">
+                    <img src="assets/images/gallery/babies/baby-02.jpeg" alt="Emobile Baby Success Story 2">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">💝 Bundle of Joy</div>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(2)">
+                    <img src="assets/images/gallery/babies/baby-03.jpeg" alt="Emobile Baby Success Story 3">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">💝 Sweet Angel</div>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(3)">
+                    <img src="assets/images/gallery/babies/baby-04.jpeg" alt="Emobile Baby Success Story 4">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">💝 Little Miracle</div>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(4)">
+                    <img src="assets/images/gallery/babies/baby-05.jpeg" alt="Emobile Baby Success Story 5">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">💝 Precious Gift</div>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(5)">
+                    <img src="assets/images/gallery/babies/baby-06.jpeg" alt="Emobile Baby Success Story 6">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">💝 Beautiful Blessing</div>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(6)">
+                    <img src="assets/images/gallery/babies/baby-07.jpeg" alt="Emobile Baby Success Story 7">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">💝 Cherished Treasure</div>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(7)">
+                    <img src="assets/images/gallery/babies/baby-08.jpeg" alt="Emobile Baby Success Story 8">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">💝 Dream Come True</div>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(8)">
+                    <img src="assets/images/gallery/babies/baby-09.jpeg" alt="Emobile Baby Success Story 9">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">💝 Answered Prayer</div>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(9)">
+                    <img src="assets/images/gallery/babies/baby-10.jpeg" alt="Emobile Baby Success Story 10">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">💝 Hope Fulfilled</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)">×</button>
+        <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1, event)">‹</button>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="Gallery Image">
+        <button class="lightbox-nav lightbox-next" onclick="changeImage(1, event)">›</button>
+    </div>
+
+    <!-- CTA Section -->
+    <section style="padding: 100px 40px; background: linear-gradient(135deg, var(--red-primary), var(--red-light)); text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 3rem; color: white; margin-bottom: 20px;">Your Success Story Awaits</h2>
+            <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 40px;">Join the hundreds of families who have realized their dreams of parenthood through our comprehensive fertility treatments.</p>
+            <div style="display: flex; gap: 20px; justify-content: center;">
+                <a href="appointment.html" class="cta-btn" style="background: white; color: var(--red-primary);">Start Your Journey</a>
+                <a href="services.html" class="btn-secondary" style="border-color: white; color: white;">View Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--text-dark); color: white; padding: 80px 40px 30px;">
+        <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 50px; margin-bottom: 50px;">
+            <div>
+                <div style="margin-bottom: 20px;">
+                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--red-primary); margin-bottom: 5px;">Emobile</div>
+                    <div style="font-size: 0.8rem; color: var(--blue-primary); letter-spacing: 2px; text-transform: uppercase;">Specialist Hospital</div>
+                </div>
+                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; line-height: 1.7;">Your trusted partner on the journey to parenthood and wellness. We combine world-class medical expertise with compassionate care.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Quick Links</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                    <li><a href="index.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Home</a></li>
+                    <li><a href="about.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">About Us</a></li>
+                    <li><a href="services.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Services</a></li>
+                    <li><a href="gallery.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Success Stories</a></li>
+                    <li><a href="blog.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Blog</a></li>
+                    <li><a href="contact.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Our Services</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                    <li><a href="services.html#ivf" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">IVF Treatment</a></li>
+                    <li><a href="services.html#gynaecology" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Gynaecology</a></li>
+                    <li><a href="services.html#obstetrics" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Obstetrics</a></li>
+                    <li><a href="services.html#antenatal" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Antenatal Care</a></li>
+                    <li><a href="services.html#male-infertility" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Male Infertility</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Contact Info</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                    <li style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">📞 +234 815 037 5534</li>
+                    <li style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">✉️ info@emobilespecialisthospital.health</li>
+                    <li style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">📍 Lekki Phase 1, Lagos</li>
+                    <li style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">⏰ 24/7 Available</li>
+                </ul>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">© 2024 Emobile Specialist Hospital. All rights reserved.</p>
+            <div style="display: flex; gap: 20px;">
+                <a href="https://www.instagram.com/emobilespecialisthospital/" target="_blank" style="color: rgba(255, 255, 255, 0.6); font-size: 1.2rem;">📷</a>
+                <a href="#" style="color: rgba(255, 255, 255, 0.6); font-size: 1.2rem;">📘</a>
+                <a href="#" style="color: rgba(255, 255, 255, 0.6); font-size: 1.2rem;">🐦</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/2349029981301" target="_blank" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; font-size: 2rem; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        💬
+    </a>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        const images = [
+            'assets/images/gallery/babies/baby-01.jpeg',
+            'assets/images/gallery/babies/baby-02.jpeg',
+            'assets/images/gallery/babies/baby-03.jpeg',
+            'assets/images/gallery/babies/baby-04.jpeg',
+            'assets/images/gallery/babies/baby-05.jpeg',
+            'assets/images/gallery/babies/baby-06.jpeg',
+            'assets/images/gallery/babies/baby-07.jpeg',
+            'assets/images/gallery/babies/baby-08.jpeg',
+            'assets/images/gallery/babies/baby-09.jpeg',
+            'assets/images/gallery/babies/baby-10.jpeg'
+        ];
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            document.getElementById('lightbox-img').src = images[currentIndex];
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                document.getElementById('lightbox').classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function changeImage(direction, event) {
+            event.stopPropagation();
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            document.getElementById('lightbox-img').src = images[currentIndex];
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') changeImage(-1, e);
+                if (e.key === 'ArrowRight') changeImage(1, e);
+                if (e.key === 'Escape') closeLightbox({ target: { id: 'lightbox' } });
+            }
+        });
+    </script>
+</body>
+</html>

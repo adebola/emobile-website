@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Emobile Specialist Hospital</title>
+    <meta name="description" content="Expert insights on fertility, women's health, and reproductive medicine from Emobile Specialist Hospital's medical professionals.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/images/favicon/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/favicon/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon.png">
+</head>
+<body>
+    <!-- Floating shapes background -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="assets/images/logo/emobile-logo.png" alt="Emobile Specialist Hospital Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="logo-text">
+                    <span>Emobile</span>
+                    <span>Specialist Hospital</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="foundation.html">The ECI Foundation</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="blog.html" style="color: var(--red-primary);">Blog</a></li>
+                </ul>
+            </nav>
+            <a href="appointment.html" class="cta-btn">Make An Appointment</a>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section style="min-height: 40vh; display: flex; align-items: center; justify-content: center; padding: 150px 40px 80px; text-align: center; background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%);">
+        <div>
+            <div style="width: 100px; height: 100px; background: var(--sky-soft); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-size: 3rem;">📚</div>
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">Health & Wellness Blog</h1>
+            <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 700px; margin: 0 auto;">Expert insights on fertility, reproductive health, and wellness from our medical professionals</p>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section style="padding: 80px 40px 120px; background: var(--warm-white);">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <!-- Loading State (hidden when posts loaded) -->
+            <div id="loading" style="text-align: center; padding: 60px; display: none;">
+                <p style="font-size: 1.2rem; color: var(--text-muted);">Loading blog posts...</p>
+            </div>
+
+            <!-- Blog Posts Container -->
+            <div id="blog-posts" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 60px;">
+                <!-- Blog Post 1 -->
+                <article style="background: white; border-radius: 25px; overflow: hidden; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 60px rgba(0, 0, 0, 0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 40px rgba(0, 0, 0, 0.08)'">
+                    <div style="height: 250px; background: linear-gradient(135deg, var(--rose-blush), var(--sky-soft)); display: flex; align-items: center; justify-content: center; font-size: 4rem;">🔬</div>
+                    <div style="padding: 35px;">
+                        <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                            <span style="background: var(--sky-soft); color: var(--blue-dark); padding: 6px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Physicians</span>
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">Aug 29, 2024</span>
+                        </div>
+                        <h3 style="font-size: 1.6rem; margin-bottom: 15px; line-height: 1.4;">Uterine Adhesions: A Silent Cause of Infertility You Should Know About</h3>
+                        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">Understanding uterine adhesions (Asherman's syndrome) and how they can affect your fertility journey. Learn about causes, symptoms, and treatment options.</p>
+                        <a href="#" style="display: inline-flex; align-items: center; gap: 8px; color: var(--red-primary); text-decoration: none; font-weight: 600; transition: gap 0.3s;" onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article style="background: white; border-radius: 25px; overflow: hidden; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 60px rgba(0, 0, 0, 0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 40px rgba(0, 0, 0, 0.08)'">
+                    <div style="height: 250px; background: linear-gradient(135deg, var(--sky-soft), var(--rose-blush)); display: flex; align-items: center; justify-content: center; font-size: 4rem;">🔬</div>
+                    <div style="padding: 35px;">
+                        <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                            <span style="background: var(--rose-blush); color: var(--red-dark); padding: 6px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Physicians</span>
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">Aug 29, 2024</span>
+                        </div>
+                        <h3 style="font-size: 1.6rem; margin-bottom: 15px; line-height: 1.4;">Luteal Phase Defect: A Subtle Hormonal Imbalance That Could Affect Your Fertility</h3>
+                        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">Discover how luteal phase defect impacts conception and early pregnancy, and what treatments are available to support a healthy pregnancy.</p>
+                        <a href="#" style="display: inline-flex; align-items: center; gap: 8px; color: var(--red-primary); text-decoration: none; font-weight: 600; transition: gap 0.3s;" onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article style="background: white; border-radius: 25px; overflow: hidden; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 60px rgba(0, 0, 0, 0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 40px rgba(0, 0, 0, 0.08)'">
+                    <div style="height: 250px; background: linear-gradient(135deg, var(--rose-blush), var(--sky-soft)); display: flex; align-items: center; justify-content: center; font-size: 4rem;">💡</div>
+                    <div style="padding: 35px;">
+                        <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                            <span style="background: var(--sky-soft); color: var(--blue-dark); padding: 6px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Physicians</span>
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">July 17, 2023</span>
+                        </div>
+                        <h3 style="font-size: 1.6rem; margin-bottom: 15px; line-height: 1.4;">5 Expert-Backed Tips for a Successful IVF Journey</h3>
+                        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">Practical advice from our fertility specialists to help you prepare for IVF treatment and maximize your chances of success.</p>
+                        <a href="#" style="display: inline-flex; align-items: center; gap: 8px; color: var(--red-primary); text-decoration: none; font-weight: 600; transition: gap 0.3s;" onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">Read More →</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination (for future use) -->
+            <div id="pagination" style="display: flex; justify-content: center; align-items: center; gap: 10px; display: none;">
+                <button style="padding: 12px 20px; border: 2px solid var(--blue-primary); background: transparent; color: var(--blue-primary); border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Previous</button>
+                <span style="padding: 12px 20px; background: var(--blue-primary); color: white; border-radius: 10px; font-weight: 600;">1</span>
+                <span style="padding: 12px 20px; color: var(--text-muted);">2</span>
+                <span style="padding: 12px 20px; color: var(--text-muted);">3</span>
+                <button style="padding: 12px 20px; border: 2px solid var(--blue-primary); background: transparent; color: var(--blue-primary); border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Next</button>
+            </div>
+
+            <!-- API Integration Note -->
+            <div style="background: var(--cream); padding: 40px; border-radius: 25px; margin-top: 60px; text-align: center;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">🔌 API Integration Ready</h3>
+                <p style="color: var(--text-muted); line-height: 1.8;">This page is structured to dynamically fetch blog posts from your REST API endpoint (<code style="background: white; padding: 4px 10px; border-radius: 5px; color: var(--red-primary);">/api/blog/posts</code>). Simply integrate your backend to replace the static content with live data.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section style="padding: 100px 40px; background: linear-gradient(135deg, var(--blue-primary), var(--blue-light));">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 3rem; color: white; margin-bottom: 20px;">Stay Informed</h2>
+            <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 40px;">Subscribe to our newsletter for the latest insights on fertility and reproductive health.</p>
+            <form id="newsletterForm" style="display: flex; gap: 15px; justify-content: center;">
+                <input type="email" placeholder="Enter your email" required style="flex: 1; max-width: 400px; padding: 18px 25px; border: none; border-radius: 50px; font-family: 'Nunito', sans-serif; font-size: 1rem;">
+                <button type="submit" class="cta-btn" style="background: white; color: var(--blue-primary); white-space: nowrap;">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--text-dark); color: white; padding: 80px 40px 30px;">
+        <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 50px; margin-bottom: 50px;">
+            <div>
+                <div style="margin-bottom: 20px;">
+                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--red-primary); margin-bottom: 5px;">Emobile</div>
+                    <div style="font-size: 0.8rem; color: var(--blue-primary); letter-spacing: 2px; text-transform: uppercase;">Specialist Hospital</div>
+                </div>
+                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; line-height: 1.7;">Your trusted partner on the journey to parenthood and wellness. We combine world-class medical expertise with compassionate care.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Quick Links</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                    <li><a href="index.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Home</a></li>
+                    <li><a href="about.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">About Us</a></li>
+                    <li><a href="services.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Services</a></li>
+                    <li><a href="gallery.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Success Stories</a></li>
+                    <li><a href="blog.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Blog</a></li>
+                    <li><a href="contact.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Our Services</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                    <li><a href="services.html#ivf" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">IVF Treatment</a></li>
+                    <li><a href="services.html#gynaecology" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Gynaecology</a></li>
+                    <li><a href="services.html#obstetrics" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Obstetrics</a></li>
+                    <li><a href="services.html#antenatal" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Antenatal Care</a></li>
+                    <li><a href="services.html#male-infertility" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Male Infertility</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Contact Info</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                    <li style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">📞 +234 815 037 5534</li>
+                    <li style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">✉️ info@emobilespecialisthospital.health</li>
+                    <li style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">📍 Lekki Phase 1, Lagos</li>
+                    <li style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">⏰ 24/7 Available</li>
+                </ul>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">© 2024 Emobile Specialist Hospital. All rights reserved.</p>
+            <div style="display: flex; gap: 20px;">
+                <a href="https://www.instagram.com/emobilespecialisthospital/" target="_blank" style="color: rgba(255, 255, 255, 0.6); font-size: 1.2rem;">📷</a>
+                <a href="#" style="color: rgba(255, 255, 255, 0.6); font-size: 1.2rem;">📘</a>
+                <a href="#" style="color: rgba(255, 255, 255, 0.6); font-size: 1.2rem;">🐦</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/2349029981301" target="_blank" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; font-size: 2rem; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        💬
+    </a>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Newsletter form submission
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // TODO: Integrate with email service or API
+            alert('Thank you for subscribing! We will send you updates on fertility and reproductive health.');
+            this.reset();
+        });
+
+        // API Integration Function (for future use)
+        async function loadBlogPosts() {
+            try {
+                // TODO: Replace with actual API endpoint
+                // const response = await fetch('/api/blog/posts');
+                // const posts = await response.json();
+                // renderBlogPosts(posts);
+
+                // For now, static content is displayed
+                console.log('Blog posts loaded (static content). Ready for API integration at /api/blog/posts');
+            } catch (error) {
+                console.error('Error loading blog posts:', error);
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        function renderBlogPosts(posts) {
+            const container = document.getElementById('blog-posts');
+            container.innerHTML = posts.map(post => `
+                <article style="background: white; border-radius: 25px; overflow: hidden; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);">
+                    <div style="height: 250px; background: linear-gradient(135deg, var(--rose-blush), var(--sky-soft)); background-image: url(${post.image}); background-size: cover; background-position: center;"></div>
+                    <div style="padding: 35px;">
+                        <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                            <span style="background: var(--sky-soft); color: var(--blue-dark); padding: 6px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">${post.category}</span>
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">${new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                        </div>
+                        <h3 style="font-size: 1.6rem; margin-bottom: 15px; line-height: 1.4;">${post.title}</h3>
+                        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">${post.excerpt}</p>
+                        <a href="blog-post.html?id=${post.id}" style="display: inline-flex; align-items: center; gap: 8px; color: var(--red-primary); text-decoration: none; font-weight: 600;">Read More →</a>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // Uncomment to enable API loading
+        // loadBlogPosts();
+    </script>
+</body>
+</html>

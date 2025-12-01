@@ -926,15 +926,50 @@
         /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
+            flex-direction: column;
+            gap: 5px;
             background: none;
             border: none;
-            font-size: 1.5rem;
             cursor: pointer;
-            color: var(--text-dark);
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        body.menu-open {
+            overflow: hidden;
         }
 
         /* Responsive */
         @media (max-width: 1024px) {
+            .nav-container {
+                padding: 0 30px;
+            }
+
+            .hero {
+                padding: 100px 30px 60px;
+            }
+
             .hero-container,
             .about-container,
             .contact-container {
@@ -946,30 +981,196 @@
                 font-size: 3rem;
             }
 
+            .services,
+            .about,
+            .testimonials,
+            .contact {
+                padding: 80px 30px;
+            }
+
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
             }
 
             .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            footer {
+                padding: 60px 30px 30px;
+            }
         }
 
         @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 20px;
+            }
+
             .mobile-menu-btn {
-                display: block;
+                display: flex;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+                padding: 100px 30px 30px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                overflow-y: auto;
+            }
+
+            nav.active {
+                right: 0;
             }
 
             nav ul {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+            }
+
+            nav li {
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            nav a {
+                display: block;
+                padding: 18px 0;
+                font-size: 1.1rem;
+            }
+
+            nav a::after {
                 display: none;
             }
 
+            .nav-container .cta-btn {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 20px 40px;
+                min-height: auto;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-buttons .cta-btn,
+            .hero-buttons .btn-secondary {
+                width: 100%;
+                text-align: center;
+                padding: 16px 24px;
+            }
+
+            .hero-stats {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .hero-image {
+                height: 350px;
+            }
+
+            .floating-card {
+                padding: 15px 20px;
+            }
+
+            .floating-card-1 {
+                bottom: -15px;
+                left: 10px;
+                transform: scale(0.85);
+            }
+
+            .floating-card-2 {
+                top: 20px;
+                right: 10px;
+                transform: scale(0.85);
+            }
+
+            .services,
+            .about,
+            .testimonials,
+            .contact {
+                padding: 60px 20px;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .service-card {
+                padding: 30px;
+            }
+
+            .about-image-main {
+                height: 350px;
+            }
+
+            .about-image-accent {
+                width: 150px;
+                height: 150px;
+                bottom: -20px;
+                right: -20px;
+            }
+
+            .about-image-accent span {
+                font-size: 2.2rem;
+            }
+
+            .about-content h2 {
+                font-size: 2rem;
+            }
+
+            .about-content p {
+                font-size: 0.95rem;
+            }
+
+            .testimonial-content {
+                padding: 35px 25px;
+            }
+
+            .testimonial-text {
+                font-size: 1.2rem;
+            }
+
+            .contact-form-wrapper {
+                padding: 30px 25px;
             }
 
             .form-row {
@@ -985,5 +1186,241 @@
                 flex-direction: column;
                 gap: 20px;
                 text-align: center;
+            }
+
+            footer {
+                padding: 50px 20px 30px;
+            }
+        }
+
+        /* Override inline grid styles for responsive layouts */
+        @media (max-width: 768px) {
+            /* Force single column layouts on mobile by overriding inline styles */
+            [style*="grid-template-columns: 1fr 1fr"],
+            [style*="grid-template-columns: 1fr 2fr"],
+            [style*="grid-template-columns: 2fr 1fr"],
+            [style*="grid-template-columns: repeat(2, 1fr)"],
+            [style*="grid-template-columns: repeat(3, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            [style*="grid-template-columns: repeat(4, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            [style*="grid-template-columns: repeat(5, 1fr)"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            /* Adjust page header font sizes */
+            section h1 {
+                font-size: 2.2rem !important;
+            }
+
+            section h2 {
+                font-size: 2rem !important;
+            }
+
+            section h3 {
+                font-size: 1.5rem !important;
+            }
+
+            /* Reduce padding on sections with inline styles */
+            section[style*="padding: 120px"] {
+                padding: 60px 20px !important;
+            }
+
+            section[style*="padding: 100px"] {
+                padding: 50px 20px !important;
+            }
+
+            section[style*="padding: 80px"] {
+                padding: 40px 20px !important;
+            }
+
+            /* Fix gap spacing on mobile */
+            [style*="gap: 80px"] {
+                gap: 40px !important;
+            }
+
+            [style*="gap: 60px"] {
+                gap: 30px !important;
+            }
+
+            /* Adjust image heights on mobile */
+            img[style*="height: 600px"] {
+                height: 300px !important;
+            }
+
+            /* Fix CTA button layout */
+            [style*="display: flex"][style*="gap: 20px"][style*="justify-content: center"] {
+                flex-direction: column !important;
+            }
+
+            [style*="display: flex"][style*="gap: 20px"][style*="justify-content: center"] > * {
+                width: 100% !important;
+                text-align: center !important;
+            }
+
+            /* Center contact page sections on mobile */
+            section > div > div[style*="grid-template-columns: 1fr 1fr"] > div {
+                margin-left: auto !important;
+                margin-right: auto !important;
+                max-width: 100% !important;
+            }
+
+            /* Fix form alignment on mobile */
+            form[id="contactForm"] {
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 30px 20px !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Fix form input widths */
+            form[id="contactForm"] input,
+            form[id="contactForm"] textarea,
+            form[id="contactForm"] select {
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Center headings in stacked sections */
+            section h2:not(footer h2),
+            section h3:not(footer h3) {
+                text-align: center !important;
+            }
+
+            /* Center paragraph text in contact sections on mobile */
+            section p {
+                text-align: center !important;
+            }
+
+            /* Exception: Keep form labels and inputs left-aligned */
+            form label,
+            form p,
+            form input,
+            form textarea,
+            form select {
+                text-align: left !important;
+            }
+
+            /* Center divs inside contact sections */
+            div[style*="background: linear-gradient(135deg, var(--rose-blush)"],
+            div[style*="background: white"][style*="padding: 40px"] {
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            /* Center Emergency Contact card content */
+            div[style*="background: linear-gradient(135deg, var(--rose-blush)"] h3,
+            div[style*="background: linear-gradient(135deg, var(--rose-blush)"] p {
+                text-align: center !important;
+            }
+
+            /* Center the phone number div inside Emergency Contact */
+            div[style*="background: linear-gradient(135deg, var(--rose-blush)"] div[style*="background: white"] {
+                text-align: center !important;
+            }
+
+            div[style*="background: linear-gradient(135deg, var(--rose-blush)"] div[style*="background: white"] p {
+                text-align: center !important;
+                margin: 0 auto !important;
+            }
+
+            /* Center Connect With Us section */
+            div[style*="background: white"][style*="padding: 40px"] h3 {
+                text-align: center !important;
+            }
+
+            /* Ensure Why Contact Us content stays centered */
+            section > div > div[style*="grid-template-columns"] > div > h2,
+            section > div > div[style*="grid-template-columns"] > div > p {
+                text-align: center !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-icon {
+                width: 45px;
+                height: 45px;
+            }
+
+            .logo-text span:first-child {
+                font-size: 1.1rem;
+            }
+
+            .logo-text span:last-child {
+                font-size: 0.65rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 8px 16px;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .stat {
+                padding: 15px;
+                background: white;
+                border-radius: 15px;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .about-content h2 {
+                font-size: 1.75rem;
+            }
+
+            .testimonials::before {
+                font-size: 200px;
+                top: 0;
+                left: 20px;
+            }
+
+            .testimonial-text {
+                font-size: 1.1rem;
+            }
+
+            /* Further reduce core values to single column on very small screens */
+            [style*="grid-template-columns: repeat(5, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Smaller page headers */
+            section h1 {
+                font-size: 1.8rem !important;
+            }
+
+            section h2 {
+                font-size: 1.6rem !important;
+            }
+
+            section h3 {
+                font-size: 1.3rem !important;
+            }
+
+            /* Adjust image heights for very small screens */
+            img[style*="height: 600px"] {
+                height: 250px !important;
             }
         }

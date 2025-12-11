@@ -23,3 +23,8 @@ npm-debug.log*
 
 # Node (if added later)
 node_modules/
+
+# Firebase Functions
+functions/.env
+functions/node_modules
+functions/.runtimeconfig.json

@@ -45,6 +45,7 @@
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="foundation.html">The ECI Foundation</a></li>
                     <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="blog.html">Blog</a></li>
                 </ul>
@@ -284,20 +285,57 @@
 
     <script src="assets/js/main.js"></script>
     <script>
-        // Appointment form submission (placeholder for API integration)
-        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+        // Appointment form submission
+        document.getElementById('appointmentForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            // TODO: Integrate with REST API endpoint /api/appointments
-            alert('Thank you for your appointment request! Our team will contact you within 24 hours to confirm your appointment.');
-            this.reset();
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Booking...';
+
+            const formData = {
+                firstName: this.querySelector('[name="firstName"]').value,
+                lastName: this.querySelector('[name="lastName"]').value,
+                email: this.querySelector('[name="email"]').value,
+                phone: this.querySelector('[name="phone"]').value,
+                dateOfBirth: this.querySelector('[name="dateOfBirth"]')?.value || '',
+                service: this.querySelector('[name="service"]').value,
+                preferredDate: this.querySelector('[name="preferredDate"]').value,
+                preferredTime: this.querySelector('[name="preferredTime"]').value,
+                additionalInfo: this.querySelector('[name="additionalInfo"]')?.value || ''
+            };
+
+            try {
+                const response = await fetch('https://us-central1-emobile-7372c.cloudfunctions.net/submitAppointment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert(result.message);
+                    this.reset();
+                } else {
+                    alert(result.error || 'Failed to book appointment. Please try again.');
+                }
+            } catch (error) {
+                console.error('Appointment booking error:', error);
+                alert('Network error. Please check your connection and try again.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            }
         });
 
         // Set minimum date to today
         const today = new Date().toISOString().split('T')[0];
         document.querySelectorAll('input[type="date"]').forEach(input => {
-            if (!input.value) {
-                input.setAttribute('min', today);
-            }
+            input.setAttribute('min', today);
         });
     </script>
 </body>

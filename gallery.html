@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Success Stories - Emobile Babies Gallery</title>
-    <meta name="description" content="Celebrate our success stories! View photos of precious babies born through Emobile Specialist Hospital's fertility treatments.">
+    <title>Gallery - Our Facility, Equipment & Team | Emobile Specialist Hospital</title>
+    <meta name="description" content="Explore our state-of-the-art medical facility, advanced equipment, dedicated team, and success stories at Emobile Specialist Hospital in Lagos, Nigeria.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -134,6 +134,104 @@
         .lightbox-next {
             right: 30px;
         }
+
+        /* Filter buttons */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            padding: 40px 0;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--text-light);
+            color: var(--text-dark);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--red-primary), var(--red-light));
+            color: white;
+            border-color: var(--red-primary);
+            box-shadow: 0 5px 20px rgba(227, 27, 35, 0.3);
+        }
+
+        .count-badge {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        .filter-btn.active .count-badge {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Gallery grid fade transition */
+        .gallery-grid {
+            transition: opacity 0.3s ease;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .gallery-item img {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .filter-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                padding: 30px 0;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 25px;
+            }
+
+            .gallery-item img {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .filter-container {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .gallery-item img {
+                height: 350px;
+            }
+
+            .filter-btn {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -162,6 +260,7 @@
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="foundation.html">The ECI Foundation</a></li>
                     <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="blog.html">Blog</a></li>
                 </ul>
@@ -175,110 +274,49 @@
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section style="min-height: 50vh; display: flex; align-items: center; justify-content: center; padding: 150px 40px 80px; text-align: center; background: linear-gradient(135deg, var(--rose-blush), var(--sky-soft));">
-        <div>
-            <div style="width: 120px; height: 120px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; font-size: 4rem;">👶</div>
-            <h1 style="font-size: 4rem; margin-bottom: 20px; color: var(--text-dark);">Emobile Babies</h1>
-            <p style="color: var(--text-dark); font-size: 1.3rem; max-width: 800px; margin: 0 auto;">Our Greatest Joy - Celebrating the precious lives we've helped bring into the world</p>
-        </div>
-    </section>
-
-    <!-- Success Stories Introduction -->
-    <section style="padding: 80px 40px; background: var(--warm-white);">
-        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-            <h2 style="font-size: 3rem; margin-bottom: 25px;">Success Stories That Inspire Us</h2>
-            <p style="color: var(--text-muted); font-size: 1.2rem; line-height: 1.9; margin-bottom: 40px;">Every baby born through our care represents a journey of hope, perseverance, and love. These precious little ones are a testament to the dedication of our medical team and the strength of the families we serve. We are honored to have played a part in these beautiful stories.</p>
-            <div style="background: linear-gradient(135deg, var(--blue-primary), var(--blue-light)); padding: 50px; border-radius: 25px;">
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
-                    <div style="text-align: center;">
-                        <div style="font-size: 3.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: white; margin-bottom: 10px;">1000+</div>
-                        <div style="color: rgba(255, 255, 255, 0.95); font-size: 1.1rem;">Happy Families</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 3.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: white; margin-bottom: 10px;">15+</div>
-                        <div style="color: rgba(255, 255, 255, 0.95); font-size: 1.1rem;">Years of Excellence</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 3.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: white; margin-bottom: 10px;">High</div>
-                        <div style="color: rgba(255, 255, 255, 0.95); font-size: 1.1rem;">Success Rates</div>
-                    </div>
-                </div>
+    <!-- Building Hero Section -->
+    <section style="min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 150px 40px 80px; text-align: center; background: linear-gradient(135deg, var(--rose-blush), var(--sky-soft)); position: relative; overflow: hidden;">
+        <div style="position: relative; z-index: 2;">
+            <div style="width: 120px; height: 120px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; font-size: 4rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);">🏥</div>
+            <h1 style="font-size: 4rem; margin-bottom: 20px; color: var(--text-dark);">Emobile Specialist Hospital Gallery</h1>
+            <p style="color: var(--text-dark); font-size: 1.3rem; max-width: 900px; margin: 0 auto 40px;">Explore our state-of-the-art medical facility, advanced equipment, dedicated team, and success stories</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#gallery-section" class="cta-btn" style="text-decoration: none;">View Gallery</a>
+                <a href="services.html" class="btn-secondary" style="text-decoration: none;">Our Services</a>
             </div>
         </div>
     </section>
 
+    <!-- Filter Navigation -->
+    <section style="padding: 40px 40px 20px; background: var(--cream);">
+        <div class="filter-container">
+            <button class="filter-btn active" data-category="building" onclick="filterGallery('building')" aria-label="Show building photos" aria-pressed="true">
+                🏥 Building <span class="count-badge">10</span>
+            </button>
+            <button class="filter-btn" data-category="equipment" onclick="filterGallery('equipment')" aria-label="Show equipment photos" aria-pressed="false">
+                🔬 Equipment <span class="count-badge">25</span>
+            </button>
+            <button class="filter-btn" data-category="team" onclick="filterGallery('team')" aria-label="Show team photos" aria-pressed="false">
+                👥 Team <span class="count-badge">37</span>
+            </button>
+            <button class="filter-btn" data-category="babies" onclick="filterGallery('babies')" aria-label="Show success stories" aria-pressed="false">
+                👶 Success Stories <span class="count-badge">10</span>
+            </button>
+        </div>
+    </section>
+
     <!-- Gallery Grid -->
-    <section style="padding: 80px 40px 120px; background: var(--cream);">
+    <section id="gallery-section" style="padding: 60px 40px 120px; background: var(--cream);">
         <div style="max-width: 1400px; margin: 0 auto;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 50px; text-align: center;">Our Precious Miracles</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="openLightbox(0)">
-                    <img src="assets/images/gallery/babies/baby-01.jpeg" alt="Emobile Baby Success Story 1">
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-text">💝 Precious Miracle</div>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(1)">
-                    <img src="assets/images/gallery/babies/baby-02.jpeg" alt="Emobile Baby Success Story 2">
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-text">💝 Bundle of Joy</div>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(2)">
-                    <img src="assets/images/gallery/babies/baby-03.jpeg" alt="Emobile Baby Success Story 3">
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-text">💝 Sweet Angel</div>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(3)">
-                    <img src="assets/images/gallery/babies/baby-04.jpeg" alt="Emobile Baby Success Story 4">
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-text">💝 Little Miracle</div>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(4)">
-                    <img src="assets/images/gallery/babies/baby-05.jpeg" alt="Emobile Baby Success Story 5">
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-text">💝 Precious Gift</div>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(5)">
-                    <img src="assets/images/gallery/babies/baby-06.jpeg" alt="Emobile Baby Success Story 6">
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-text">💝 Beautiful Blessing</div>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(6)">
-                    <img src="assets/images/gallery/babies/baby-07.jpeg" alt="Emobile Baby Success Story 7">
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-text">💝 Cherished Treasure</div>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(7)">
-                    <img src="assets/images/gallery/babies/baby-08.jpeg" alt="Emobile Baby Success Story 8">
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-text">💝 Dream Come True</div>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(8)">
-                    <img src="assets/images/gallery/babies/baby-09.jpeg" alt="Emobile Baby Success Story 9">
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-text">💝 Answered Prayer</div>
-                    </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(9)">
-                    <img src="assets/images/gallery/babies/baby-10.jpeg" alt="Emobile Baby Success Story 10">
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-text">💝 Hope Fulfilled</div>
-                    </div>
-                </div>
+            <h2 id="gallery-heading" style="font-size: 2.5rem; margin-bottom: 50px; text-align: center;">Our State-of-the-Art Facility</h2>
+            <div id="gallery-container" class="gallery-grid">
+                <!-- Gallery items will be dynamically inserted here -->
             </div>
         </div>
     </section>
 
     <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image gallery lightbox" onclick="closeLightbox(event)">
         <button class="lightbox-close" onclick="closeLightbox(event)">×</button>
         <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1, event)">‹</button>
         <img id="lightbox-img" class="lightbox-content" src="" alt="Gallery Image">
@@ -355,23 +393,223 @@
 
     <script src="assets/js/main.js"></script>
     <script>
-        const images = [
-            'assets/images/gallery/babies/baby-01.jpeg',
-            'assets/images/gallery/babies/baby-02.jpeg',
-            'assets/images/gallery/babies/baby-03.jpeg',
-            'assets/images/gallery/babies/baby-04.jpeg',
-            'assets/images/gallery/babies/baby-05.jpeg',
-            'assets/images/gallery/babies/baby-06.jpeg',
-            'assets/images/gallery/babies/baby-07.jpeg',
-            'assets/images/gallery/babies/baby-08.jpeg',
-            'assets/images/gallery/babies/baby-09.jpeg',
-            'assets/images/gallery/babies/baby-10.jpeg'
-        ];
+        // Gallery data with all 82 images across 4 categories
+        const galleryData = {
+            building: [
+                { thumb: 'assets/images/gallery/building/thumbs/dji_fly_20250905_162444_0032_1757088032258_photo-thumb.jpg', full: 'assets/images/gallery/building/dji_fly_20250905_162444_0032_1757088032258_photo.JPG', alt: 'Emobile Hospital - Aerial View 1', caption: '🏗️ Modern Architecture' },
+                { thumb: 'assets/images/gallery/building/thumbs/dji_fly_20250905_163046_0040_1757087978474_photo-thumb.jpg', full: 'assets/images/gallery/building/dji_fly_20250905_163046_0040_1757087978474_photo.JPG', alt: 'Emobile Hospital - Aerial View 2', caption: '🏗️ World-Class Facility' },
+                { thumb: 'assets/images/gallery/building/thumbs/dji_fly_20250905_163556_0048_1757087931564_photo-thumb.jpg', full: 'assets/images/gallery/building/dji_fly_20250905_163556_0048_1757087931564_photo.JPG', alt: 'Emobile Hospital - Aerial View 3', caption: '🏗️ State-of-the-Art Design' },
+                { thumb: 'assets/images/gallery/building/thumbs/dji_fly_20250905_164050_0050_1757087929819_photo-thumb.jpg', full: 'assets/images/gallery/building/dji_fly_20250905_164050_0050_1757087929819_photo.JPG', alt: 'Emobile Hospital - Aerial View 4', caption: '🏗️ Comprehensive Complex' },
+                { thumb: 'assets/images/gallery/building/thumbs/dji_fly_20250905_164052_0051_1757087929008_photo-thumb.jpg', full: 'assets/images/gallery/building/dji_fly_20250905_164052_0051_1757087929008_photo.JPG', alt: 'Emobile Hospital - Aerial View 5', caption: '🏗️ Medical Excellence Hub' },
+                { thumb: 'assets/images/gallery/building/thumbs/dji_fly_20250905_164518_0062_1757087887049_photo-thumb.jpg', full: 'assets/images/gallery/building/dji_fly_20250905_164518_0062_1757087887049_photo.JPG', alt: 'Emobile Hospital - Aerial View 6', caption: '🏗️ Innovative Infrastructure' },
+                { thumb: 'assets/images/gallery/building/thumbs/31A0789D-1909-4EE4-BB08-B8562AD43C6A-thumb.jpg', full: 'assets/images/gallery/building/31A0789D-1909-4EE4-BB08-B8562AD43C6A.jpeg', alt: 'Emobile Hospital Building', caption: '🏗️ Premium Healthcare Center' },
+                { thumb: 'assets/images/gallery/building/thumbs/8C490CA4-301D-4BE4-9434-39725F9E3E51-thumb.jpg', full: 'assets/images/gallery/building/8C490CA4-301D-4BE4-9434-39725F9E3E51.jpeg', alt: 'Emobile Hospital Exterior', caption: '🏗️ Contemporary Design' },
+                { thumb: 'assets/images/gallery/building/thumbs/CD0EEB37-133B-49DC-AAB9-DE26E0504971-thumb.jpg', full: 'assets/images/gallery/building/CD0EEB37-133B-49DC-AAB9-DE26E0504971.jpeg', alt: 'Emobile Hospital Grounds', caption: '🏗️ Healing Environment' },
+                { thumb: 'assets/images/gallery/building/thumbs/EE89924A-2C63-4185-BE30-9A957DB212B8-thumb.jpg', full: 'assets/images/gallery/building/EE89924A-2C63-4185-BE30-9A957DB212B8.jpeg', alt: 'Emobile Hospital Campus', caption: '🏗️ Advanced Medical Campus' }
+            ],
+            equipment: [
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1222-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1222.jpg', alt: 'Medical Equipment 1', caption: '🔬 Advanced Technology' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1227-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1227.jpg', alt: 'Medical Equipment 2', caption: '🔬 Precision Instruments' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1231-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1231.jpg', alt: 'Medical Equipment 3', caption: '🔬 State-of-the-Art Tools' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1236-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1236.jpg', alt: 'Medical Equipment 4', caption: '🔬 Modern Medical Tech' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1240-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1240.jpg', alt: 'Medical Equipment 5', caption: '🔬 Cutting-Edge Devices' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1247-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1247.jpg', alt: 'Medical Equipment 6', caption: '🔬 Clinical Excellence' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1253-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1253.jpg', alt: 'Medical Equipment 7', caption: '🔬 Healthcare Innovation' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1256-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1256.jpg', alt: 'Medical Equipment 8', caption: '🔬 Professional Grade' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1268-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1268.jpg', alt: 'Medical Equipment 9', caption: '🔬 Medical Precision' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1272-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1272.jpg', alt: 'Medical Equipment 10', caption: '🔬 Diagnostic Excellence' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1286-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1286.jpg', alt: 'Medical Equipment 11', caption: '🔬 Treatment Technology' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1293-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1293.jpg', alt: 'Medical Equipment 12', caption: '🔬 Patient Care Tools' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1295-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1295.jpg', alt: 'Medical Equipment 13', caption: '🔬 Surgical Equipment' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1301-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1301.jpg', alt: 'Medical Equipment 14', caption: '🔬 Laboratory Systems' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1305-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1305.jpg', alt: 'Medical Equipment 15', caption: '🔬 Monitoring Systems' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1311-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1311.jpg', alt: 'Medical Equipment 16', caption: '🔬 Medical Imaging' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1313-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1313.jpg', alt: 'Medical Equipment 17', caption: '🔬 Healthcare Solutions' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1317-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1317.jpg', alt: 'Medical Equipment 18', caption: '🔬 Clinical Tools' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1320-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1320.jpg', alt: 'Medical Equipment 19', caption: '🔬 Advanced Systems' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1333-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1333.jpg', alt: 'Medical Equipment 20', caption: '🔬 Modern Facilities' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1338-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1338.jpg', alt: 'Medical Equipment 21', caption: '🔬 Quality Equipment' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1340-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1340.jpg', alt: 'Medical Equipment 22', caption: '🔬 Professional Tools' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1351-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1351.jpg', alt: 'Medical Equipment 23', caption: '🔬 Medical Devices' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1378-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1378.jpg', alt: 'Medical Equipment 24', caption: '🔬 Healthcare Technology' },
+                { thumb: 'assets/images/gallery/equipment/thumbs/_DSC1379-thumb.jpg', full: 'assets/images/gallery/equipment/_DSC1379.jpg', alt: 'Medical Equipment 25', caption: '🔬 Innovation in Care' }
+            ],
+            team: [
+                { thumb: 'assets/images/gallery/team/thumbs/040D3CD4-C8A2-4A99-A258-0A19604498EC_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/040D3CD4-C8A2-4A99-A258-0A19604498EC_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Expert Care Team' },
+                { thumb: 'assets/images/gallery/team/thumbs/0ACDC2A3-90A6-438E-963E-E86C2E8B281C_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/0ACDC2A3-90A6-438E-963E-E86C2E8B281C_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Professional Excellence' },
+                { thumb: 'assets/images/gallery/team/thumbs/0BD5CA79-D1E7-40D8-84B2-8C7F70FD91D5_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/0BD5CA79-D1E7-40D8-84B2-8C7F70FD91D5_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Dedicated Specialist' },
+                { thumb: 'assets/images/gallery/team/thumbs/18C1262A-83B0-4BA2-B1A8-1BCD757E3E62_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/18C1262A-83B0-4BA2-B1A8-1BCD757E3E62_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Healthcare Professional' },
+                { thumb: 'assets/images/gallery/team/thumbs/21D77126-95B9-4174-9EC9-A5A817F4DB75_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/21D77126-95B9-4174-9EC9-A5A817F4DB75_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Medical Expert' },
+                { thumb: 'assets/images/gallery/team/thumbs/24197B93-979D-4EB0-91DD-96E70D5B9D13_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/24197B93-979D-4EB0-91DD-96E70D5B9D13_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Compassionate Care' },
+                { thumb: 'assets/images/gallery/team/thumbs/2CBF46ED-C797-4E74-B853-6FEDE48F4D0F_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/2CBF46ED-C797-4E74-B853-6FEDE48F4D0F_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Skilled Practitioner' },
+                { thumb: 'assets/images/gallery/team/thumbs/33E76131-5BE5-4BF8-883F-2C34ABEB1041_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/33E76131-5BE5-4BF8-883F-2C34ABEB1041_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Clinical Excellence' },
+                { thumb: 'assets/images/gallery/team/thumbs/3770E453-7B9D-4AA9-B6FC-0138076B3139_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/3770E453-7B9D-4AA9-B6FC-0138076B3139_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Expert Physician' },
+                { thumb: 'assets/images/gallery/team/thumbs/379DB064-A3EB-425F-8535-A830D74951FD_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/379DB064-A3EB-425F-8535-A830D74951FD_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Healthcare Leader' },
+                { thumb: 'assets/images/gallery/team/thumbs/37E4A3D5-C653-425C-8CA6-B4D412B08E3E_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/37E4A3D5-C653-425C-8CA6-B4D412B08E3E_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Experienced Doctor' },
+                { thumb: 'assets/images/gallery/team/thumbs/422582D0-4E4B-410A-BBFD-B6D66CB4A412_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/422582D0-4E4B-410A-BBFD-B6D66CB4A412_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Medical Professional' },
+                { thumb: 'assets/images/gallery/team/thumbs/46746E64-0DD1-41C0-A2AD-0EDDEEC90E92_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/46746E64-0DD1-41C0-A2AD-0EDDEEC90E92_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Care Specialist' },
+                { thumb: 'assets/images/gallery/team/thumbs/47D5715A-F959-418F-A7ED-271AEF72E65E_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/47D5715A-F959-418F-A7ED-271AEF72E65E_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Fertility Expert' },
+                { thumb: 'assets/images/gallery/team/thumbs/4E3AEA63-9142-4009-9B5D-5D8CCE5B0B98_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/4E3AEA63-9142-4009-9B5D-5D8CCE5B0B98_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Women\'s Health Expert' },
+                { thumb: 'assets/images/gallery/team/thumbs/55ABB18F-9F9F-46E6-91E4-16AE9AC5FBB9_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/55ABB18F-9F9F-46E6-91E4-16AE9AC5FBB9_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Obstetrics Specialist' },
+                { thumb: 'assets/images/gallery/team/thumbs/5A7744A9-FB0F-4B28-8607-F95BBAC3CD12_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/5A7744A9-FB0F-4B28-8607-F95BBAC3CD12_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Gynecology Expert' },
+                { thumb: 'assets/images/gallery/team/thumbs/5D9A0F13-8954-4F6A-B0C8-E9192718175F_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/5D9A0F13-8954-4F6A-B0C8-E9192718175F_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ IVF Specialist' },
+                { thumb: 'assets/images/gallery/team/thumbs/61D0E06B-D432-4EF6-BB25-5C8AE83C1C67_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/61D0E06B-D432-4EF6-BB25-5C8AE83C1C67_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Reproductive Medicine' },
+                { thumb: 'assets/images/gallery/team/thumbs/65A4793B-F4BA-4E96-B855-B49064595133_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/65A4793B-F4BA-4E96-B855-B49064595133_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Senior Consultant' },
+                { thumb: 'assets/images/gallery/team/thumbs/6CAE71C7-F22F-4412-9404-87EC6473E306_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/6CAE71C7-F22F-4412-9404-87EC6473E306_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Lead Physician' },
+                { thumb: 'assets/images/gallery/team/thumbs/7157AE3F-F47D-4536-98EB-A5A2D7F66174_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/7157AE3F-F47D-4536-98EB-A5A2D7F66174_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Medical Director' },
+                { thumb: 'assets/images/gallery/team/thumbs/765BBDCF-ABE5-4EF9-A5AE-51A3ADBC79AD_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/765BBDCF-ABE5-4EF9-A5AE-51A3ADBC79AD_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Chief Surgeon' },
+                { thumb: 'assets/images/gallery/team/thumbs/8005BC77-CDD1-465E-B0DE-F50B72F0EC40_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/8005BC77-CDD1-465E-B0DE-F50B72F0EC40_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Pediatric Specialist' },
+                { thumb: 'assets/images/gallery/team/thumbs/812DA6BC-90EF-4DDF-998F-239AE992081D_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/812DA6BC-90EF-4DDF-998F-239AE992081D_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Neonatal Expert' },
+                { thumb: 'assets/images/gallery/team/thumbs/8A5D91B9-DECC-4D4A-8C29-1780217B2562_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/8A5D91B9-DECC-4D4A-8C29-1780217B2562_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Anesthesiologist' },
+                { thumb: 'assets/images/gallery/team/thumbs/8ABA0BE3-A206-4778-BCD3-56F204A9A399_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/8ABA0BE3-A206-4778-BCD3-56F204A9A399_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Lab Specialist' },
+                { thumb: 'assets/images/gallery/team/thumbs/90B99EE2-9EE2-4BFA-A633-E86E18AEADC0_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/90B99EE2-9EE2-4BFA-A633-E86E18AEADC0_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Nursing Director' },
+                { thumb: 'assets/images/gallery/team/thumbs/93098D71-010E-4C32-A4C6-0FC06A1B1668_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/93098D71-010E-4C32-A4C6-0FC06A1B1668_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Clinical Coordinator' },
+                { thumb: 'assets/images/gallery/team/thumbs/96690E96-78E0-43C1-82AD-F0D5D20D7A56_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/96690E96-78E0-43C1-82AD-F0D5D20D7A56_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Patient Care Lead' },
+                { thumb: 'assets/images/gallery/team/thumbs/9E536B57-C228-4CA0-BDEB-04BC9EF7C84C_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/9E536B57-C228-4CA0-BDEB-04BC9EF7C84C_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Medical Counselor' },
+                { thumb: 'assets/images/gallery/team/thumbs/A4631786-4158-40CA-9BFA-0754A01ED09D_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/A4631786-4158-40CA-9BFA-0754A01ED09D_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Healthcare Advisor' },
+                { thumb: 'assets/images/gallery/team/thumbs/ABA9DC2A-06AC-415E-9203-D6E14C72373D_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/ABA9DC2A-06AC-415E-9203-D6E14C72373D_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Fertility Counselor' },
+                { thumb: 'assets/images/gallery/team/thumbs/B216B206-6618-46BC-B7DC-F0B3F887DA99_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/B216B206-6618-46BC-B7DC-F0B3F887DA99_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Diagnostic Specialist' },
+                { thumb: 'assets/images/gallery/team/thumbs/B5E119E6-0263-4103-B901-6F5F511EF174_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/B5E119E6-0263-4103-B901-6F5F511EF174_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Treatment Coordinator' },
+                { thumb: 'assets/images/gallery/team/thumbs/E0BC528C-EE15-463B-980B-277ABBFA40E0_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/E0BC528C-EE15-463B-980B-277ABBFA40E0_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Senior Nurse' },
+                { thumb: 'assets/images/gallery/team/thumbs/EE2EAA97-B392-4BCF-9F73-09327F29103C_1_105_c-thumb.jpg', full: 'assets/images/gallery/team/EE2EAA97-B392-4BCF-9F73-09327F29103C_1_105_c.jpg', alt: 'Medical Team Member', caption: '👨‍⚕️ Care Manager' }
+            ],
+            babies: [
+                { thumb: 'assets/images/gallery/babies/thumbs/baby-01-thumb.jpg', full: 'assets/images/gallery/babies/baby-01.jpeg', alt: 'Emobile Baby Success Story', caption: '💝 Precious Miracle' },
+                { thumb: 'assets/images/gallery/babies/thumbs/baby-02-thumb.jpg', full: 'assets/images/gallery/babies/baby-02.jpeg', alt: 'Emobile Baby Success Story', caption: '💝 Bundle of Joy' },
+                { thumb: 'assets/images/gallery/babies/thumbs/baby-03-thumb.jpg', full: 'assets/images/gallery/babies/baby-03.jpeg', alt: 'Emobile Baby Success Story', caption: '💝 Sweet Angel' },
+                { thumb: 'assets/images/gallery/babies/thumbs/baby-04-thumb.jpg', full: 'assets/images/gallery/babies/baby-04.jpeg', alt: 'Emobile Baby Success Story', caption: '💝 Little Miracle' },
+                { thumb: 'assets/images/gallery/babies/thumbs/baby-05-thumb.jpg', full: 'assets/images/gallery/babies/baby-05.jpeg', alt: 'Emobile Baby Success Story', caption: '💝 Precious Gift' },
+                { thumb: 'assets/images/gallery/babies/thumbs/baby-06-thumb.jpg', full: 'assets/images/gallery/babies/baby-06.jpeg', alt: 'Emobile Baby Success Story', caption: '💝 Beautiful Blessing' },
+                { thumb: 'assets/images/gallery/babies/thumbs/baby-07-thumb.jpg', full: 'assets/images/gallery/babies/baby-07.jpeg', alt: 'Emobile Baby Success Story', caption: '💝 Cherished Treasure' },
+                { thumb: 'assets/images/gallery/babies/thumbs/baby-08-thumb.jpg', full: 'assets/images/gallery/babies/baby-08.jpeg', alt: 'Emobile Baby Success Story', caption: '💝 Dream Come True' },
+                { thumb: 'assets/images/gallery/babies/thumbs/baby-09-thumb.jpg', full: 'assets/images/gallery/babies/baby-09.jpeg', alt: 'Emobile Baby Success Story', caption: '💝 Answered Prayer' },
+                { thumb: 'assets/images/gallery/babies/thumbs/baby-10-thumb.jpg', full: 'assets/images/gallery/babies/baby-10.jpeg', alt: 'Emobile Baby Success Story', caption: '💝 Hope Fulfilled' }
+            ]
+        };
+
+        const categoryHeadings = {
+            building: 'Our State-of-the-Art Facility',
+            equipment: 'Advanced Medical Equipment',
+            team: 'Our Expert Care Team',
+            babies: 'Our Precious Miracles'
+        };
+
+        let currentCategory = 'building';
+        let currentImages = galleryData[currentCategory];
         let currentIndex = 0;
 
-        function openLightbox(index) {
+        // Lazy loading observer
+        const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    img.style.opacity = '1';
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '100px'
+        });
+
+        // Fallback for browsers without IntersectionObserver
+        function loadImagesImmediately() {
+            document.querySelectorAll('.gallery-item img[data-src]').forEach(img => {
+                img.src = img.dataset.src;
+                img.style.opacity = '1';
+            });
+        }
+
+        // Render gallery for a specific category
+        function renderGallery(category) {
+            const container = document.getElementById('gallery-container');
+            const heading = document.getElementById('gallery-heading');
+            const images = galleryData[category];
+
+            // Update heading
+            heading.textContent = categoryHeadings[category];
+
+            // Fade out current gallery
+            container.style.opacity = '0';
+
+            setTimeout(() => {
+                // Clear existing gallery items
+                container.innerHTML = '';
+
+                // Render new gallery items
+                images.forEach((item, index) => {
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    galleryItem.setAttribute('onclick', `openLightbox('${category}', ${index})`);
+
+                    galleryItem.innerHTML = `
+                        <img
+                            data-src="${item.thumb}"
+                            alt="${item.alt}"
+                            style="opacity: 0; transition: opacity 0.3s;"
+                        />
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-text">${item.caption}</div>
+                        </div>
+                    `;
+
+                    container.appendChild(galleryItem);
+                });
+
+                // Initialize lazy loading
+                if ('IntersectionObserver' in window) {
+                    document.querySelectorAll('.gallery-item img[data-src]').forEach(img => {
+                        lazyLoadObserver.observe(img);
+                    });
+                } else {
+                    loadImagesImmediately();
+                }
+
+                // Fade in new gallery
+                setTimeout(() => {
+                    container.style.opacity = '1';
+                }, 50);
+            }, 200);
+        }
+
+        // Filter gallery by category
+        function filterGallery(category) {
+            // Update active button state
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-pressed', 'false');
+            });
+
+            const activeBtn = document.querySelector(`[data-category="${category}"]`);
+            activeBtn.classList.add('active');
+            activeBtn.setAttribute('aria-pressed', 'true');
+
+            // Update current category
+            currentCategory = category;
+            currentImages = galleryData[category];
+
+            // Render new gallery
+            renderGallery(category);
+        }
+
+        // Updated lightbox functions
+        function openLightbox(category, index) {
+            currentCategory = category;
+            currentImages = galleryData[category];
             currentIndex = index;
-            document.getElementById('lightbox-img').src = images[currentIndex];
+
+            const lightboxImg = document.getElementById('lightbox-img');
+            const fullImagePath = currentImages[currentIndex].full;
+
+            // Show loading state
+            lightboxImg.style.opacity = '0.5';
+            lightboxImg.src = fullImagePath;
+
+            lightboxImg.onload = () => {
+                lightboxImg.style.opacity = '1';
+            };
+
             document.getElementById('lightbox').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -385,8 +623,15 @@
 
         function changeImage(direction, event) {
             event.stopPropagation();
-            currentIndex = (currentIndex + direction + images.length) % images.length;
-            document.getElementById('lightbox-img').src = images[currentIndex];
+            currentIndex = (currentIndex + direction + currentImages.length) % currentImages.length;
+
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.style.opacity = '0.5';
+            lightboxImg.src = currentImages[currentIndex].full;
+
+            lightboxImg.onload = () => {
+                lightboxImg.style.opacity = '1';
+            };
         }
 
         // Keyboard navigation
@@ -396,6 +641,11 @@
                 if (e.key === 'ArrowRight') changeImage(1, e);
                 if (e.key === 'Escape') closeLightbox({ target: { id: 'lightbox' } });
             }
+        });
+
+        // Initialize gallery with building category on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGallery('building');
         });
     </script>
 </body>

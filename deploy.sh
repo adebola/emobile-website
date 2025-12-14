@@ -53,8 +53,25 @@ for file in "${html_files[@]}"; do
 done
 echo -e "${GREEN}✓ HTML files copied${NC}\n"
 
-# Step 3: Copy assets directory
-echo -e "${YELLOW}Step 3: Copying assets directory...${NC}"
+# Step 3: Copy SEO files
+echo -e "${YELLOW}Step 3: Copying SEO files...${NC}"
+seo_files=(
+    "robots.txt"
+    "sitemap.xml"
+)
+
+for file in "${seo_files[@]}"; do
+    if [ -f "$SCRIPT_DIR/$file" ]; then
+        cp "$SCRIPT_DIR/$file" "$PUBLIC_DIR/"
+        echo -e "  ✓ Copied $file"
+    else
+        echo -e "${RED}  ✗ Warning: $file not found${NC}"
+    fi
+done
+echo -e "${GREEN}✓ SEO files copied${NC}\n"
+
+# Step 4: Copy assets directory
+echo -e "${YELLOW}Step 4: Copying assets directory...${NC}"
 if [ -d "$SCRIPT_DIR/assets" ]; then
     cp -R "$SCRIPT_DIR/assets" "$PUBLIC_DIR/"
     echo -e "${GREEN}✓ Assets directory copied${NC}\n"
@@ -63,9 +80,12 @@ else
     exit 1
 fi
 
-# Step 4: Summary
-echo -e "${YELLOW}Step 4: Deployment summary...${NC}"
+# Step 5: Summary
+echo -e "${YELLOW}Step 5: Deployment summary...${NC}"
 echo -e "  HTML files: $(ls -1 "$PUBLIC_DIR"/*.html 2>/dev/null | wc -l | tr -d ' ')"
+echo -e "  SEO files:"
+echo -e "    - robots.txt: $([ -f "$PUBLIC_DIR/robots.txt" ] && echo "✓" || echo "✗")"
+echo -e "    - sitemap.xml: $([ -f "$PUBLIC_DIR/sitemap.xml" ] && echo "✓" || echo "✗")"
 echo -e "  Assets:"
 echo -e "    - CSS files: $(find "$PUBLIC_DIR/assets/css" -name "*.css" 2>/dev/null | wc -l | tr -d ' ')"
 echo -e "    - JS files: $(find "$PUBLIC_DIR/assets/js" -name "*.js" 2>/dev/null | wc -l | tr -d ' ')"
@@ -73,7 +93,7 @@ echo -e "    - Images: $(find "$PUBLIC_DIR/assets/images" -type f 2>/dev/null | 
 echo -e "    - Favicons: $(find "$PUBLIC_DIR/assets/images/favicon" -type f 2>/dev/null | wc -l | tr -d ' ')"
 echo -e "${GREEN}✓ All files prepared for deployment${NC}\n"
 
-# Step 5: Ask to deploy
+# Step 6: Ask to deploy
 echo -e "${YELLOW}Ready to deploy to Firebase?${NC}"
 read -p "Deploy now? (y/n) " -n 1 -r
 echo

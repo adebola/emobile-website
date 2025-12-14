@@ -18,6 +18,96 @@
     <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/favicon-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/images/favicon/favicon-512x512.png">
     <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon.png">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMJ9YX61Y7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-TMJ9YX61Y7');
+    </script>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.emobilespecialisthospital.health/appointment.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.emobilespecialisthospital.health/appointment.html">
+    <meta property="og:title" content="Book An Appointment - Emobile Specialist Hospital">
+    <meta property="og:description" content="Book your appointment with Emobile Specialist Hospital. Take the first step towards your journey to parenthood and wellness.">
+    <meta property="og:image" content="https://www.emobilespecialisthospital.health/assets/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Emobile Specialist Hospital">
+    <meta property="og:locale" content="en_NG">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.emobilespecialisthospital.health/appointment.html">
+    <meta name="twitter:title" content="Book An Appointment - Emobile Specialist Hospital">
+    <meta name="twitter:description" content="Book your appointment with Emobile Specialist Hospital. Take the first step towards your journey to parenthood and wellness.">
+    <meta name="twitter:image" content="https://www.emobilespecialisthospital.health/assets/images/og-image.jpg">
+
+    <!-- Structured Data: Organization/MedicalBusiness Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "@id": "https://www.emobilespecialisthospital.health/#organization",
+      "name": "Emobile Specialist Hospital",
+      "alternateName": "Emobile Hospital",
+      "url": "https://www.emobilespecialisthospital.health",
+      "logo": "https://www.emobilespecialisthospital.health/assets/images/logo/emobile-logo.png",
+      "image": "https://www.emobilespecialisthospital.health/assets/images/hero/hero-slider-1.jpeg",
+      "description": "Leading IVF & Fertility Specialists in Lagos, Nigeria. A full-spectrum fertility and women's health hospital committed to delivering cutting-edge medical care.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "No 1 Iweanya Ugbogoh Crescent, Off Chris Madueke Street",
+        "addressLocality": "Lekki Phase 1",
+        "addressRegion": "Lagos",
+        "addressCountry": "NG"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "6.4379165",
+        "longitude": "3.4600684"
+      },
+      "telephone": "+234-815-037-5534",
+      "email": "info@emobilespecialisthospital.health",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "priceRange": "$$-$$$",
+      "medicalSpecialty": ["Fertility", "Gynecology", "Obstetrics", "Reproductive Medicine"]
+    }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.emobilespecialisthospital.health/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Book Appointment",
+          "item": "https://www.emobilespecialisthospital.health/appointment.html"
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Floating shapes background -->
@@ -83,28 +173,28 @@
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                             <div>
                                 <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">First Name *</label>
-                                <input type="text" required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
+                                <input type="text" name="firstName" required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
                             </div>
                             <div>
                                 <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Last Name *</label>
-                                <input type="text" required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
+                                <input type="text" name="lastName" required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
                             </div>
                         </div>
 
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                             <div>
                                 <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Email Address *</label>
-                                <input type="email" required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
+                                <input type="email" name="email" required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
                             </div>
                             <div>
                                 <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Phone Number *</label>
-                                <input type="tel" required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
+                                <input type="tel" name="phone" required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
                             </div>
                         </div>
 
                         <div style="margin-bottom: 30px;">
                             <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Date of Birth</label>
-                            <input type="date" style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
+                            <input type="date" name="dateOfBirth" style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
                         </div>
 
                         <hr style="border: none; border-top: 2px solid var(--cream); margin: 40px 0;">
@@ -113,7 +203,7 @@
 
                         <div style="margin-bottom: 20px;">
                             <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Service Required *</label>
-                            <select required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
+                            <select name="service" required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
                                 <option value="">Select a service</option>
                                 <option value="ivf">IVF & Sperm Retrieval</option>
                                 <option value="gynaecology">Gynaecological Procedures</option>
@@ -130,11 +220,11 @@
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                             <div>
                                 <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Preferred Date *</label>
-                                <input type="date" required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
+                                <input type="date" name="preferredDate" required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
                             </div>
                             <div>
                                 <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Preferred Time *</label>
-                                <select required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
+                                <select name="preferredTime" required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'">
                                     <option value="">Select time</option>
                                     <option value="09:00">09:00 AM</option>
                                     <option value="10:00">10:00 AM</option>
@@ -151,7 +241,7 @@
 
                         <div style="margin-bottom: 30px;">
                             <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Additional Information / Reason for Visit</label>
-                            <textarea rows="5" placeholder="Please provide any additional information that will help us prepare for your visit..." style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; resize: vertical; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'"></textarea>
+                            <textarea name="additionalInfo" rows="5" placeholder="Please provide any additional information that will help us prepare for your visit..." style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 1rem; resize: vertical; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--blue-primary)'" onblur="this.style.borderColor='#e0e0e0'"></textarea>
                         </div>
 
                         <div style="background: var(--sky-soft); padding: 20px; border-radius: 15px; margin-bottom: 30px;">
@@ -271,8 +361,8 @@
         <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center;">
             <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">© 2024 Emobile Specialist Hospital. All rights reserved.</p>
             <div style="display: flex; gap: 20px;">
-                <a href="https://www.instagram.com/emobilespecialisthospital/" target="_blank" style="color: rgba(255, 255, 255, 0.6); font-size: 1.2rem;">📷</a>
-                <a href="#" style="color: rgba(255, 255, 255, 0.6); font-size: 1.2rem;">📘</a>
+                <a href="https://www.instagram.com/emobilespecialisthospital?igsh=bm9uM2hzcjdneGRt" target="_blank" style="color: rgba(255, 255, 255, 0.6); font-size: 1.2rem;">📷</a>
+                <a href="https://www.facebook.com/emobilehospital/" target="_blank" style="color: rgba(255, 255, 255, 0.6); font-size: 1.2rem;">📘</a>
                 <a href="#" style="color: rgba(255, 255, 255, 0.6); font-size: 1.2rem;">🐦</a>
             </div>
         </div>
@@ -318,6 +408,12 @@
                 const result = await response.json();
 
                 if (response.ok) {
+                    // Track successful appointment booking
+                    gtag('event', 'form_submit', {
+                        'event_category': 'conversion',
+                        'event_label': 'Appointment Form',
+                        'value': 10
+                    });
                     alert(result.message);
                     this.reset();
                 } else {
@@ -332,11 +428,12 @@
             }
         });
 
-        // Set minimum date to today
+        // Set minimum date to today for appointment date only
         const today = new Date().toISOString().split('T')[0];
-        document.querySelectorAll('input[type="date"]').forEach(input => {
-            input.setAttribute('min', today);
-        });
+        const appointmentDateInput = document.querySelector('[name="preferredDate"]');
+        if (appointmentDateInput) {
+            appointmentDateInput.setAttribute('min', today);
+        }
     </script>
 </body>
 </html>

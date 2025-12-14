@@ -1,10 +1,17 @@
 const brevo = require('@getbrevo/brevo');
+const functions = require('firebase-functions');
+
+// Get config from Firebase (or fallback to process.env for local testing)
+const config = functions.config();
+const BREVO_API_KEY = config.brevo?.api_key || process.env.BREVO_API_KEY;
+const SENDER_EMAIL = config.email?.sender || process.env.SENDER_EMAIL;
+const HOSPITAL_EMAIL = config.email?.hospital || process.env.HOSPITAL_EMAIL;
 
 // Initialize Brevo API client
 let apiInstance = new brevo.TransactionalEmailsApi();
 apiInstance.setApiKey(
   brevo.TransactionalEmailsApiApiKeys.apiKey,
-  process.env.BREVO_API_KEY
+  BREVO_API_KEY
 );
 
 async function sendContactEmail(data, submissionId) {
@@ -12,10 +19,10 @@ async function sendContactEmail(data, submissionId) {
 
   sendSmtpEmail.sender = {
     name: "Emobile Hospital Website",
-    email: process.env.SENDER_EMAIL
+    email: SENDER_EMAIL
   };
   sendSmtpEmail.to = [{
-    email: process.env.HOSPITAL_EMAIL,
+    email: HOSPITAL_EMAIL,
     name: "Hospital Staff"
   }];
   sendSmtpEmail.subject = `New Contact Form Submission: ${data.subject}`;
@@ -48,10 +55,10 @@ async function sendAppointmentEmail(data, appointmentId) {
 
   sendSmtpEmail.sender = {
     name: "Emobile Hospital Website",
-    email: process.env.SENDER_EMAIL
+    email: SENDER_EMAIL
   };
   sendSmtpEmail.to = [{
-    email: process.env.HOSPITAL_EMAIL,
+    email: HOSPITAL_EMAIL,
     name: "Hospital Staff"
   }];
   sendSmtpEmail.subject = `New Appointment Request: ${data.firstName} ${data.lastName}`;

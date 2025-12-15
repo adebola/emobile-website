@@ -2,6 +2,7 @@
 
 # Emobile Specialist Hospital - Deployment Script
 # This script prepares and deploys the website to Firebase Hosting
+# Usage: ./deploy.sh [-y|--yes] to skip confirmation prompt
 
 set -e  # Exit on error
 
@@ -10,6 +11,12 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
+
+# Parse arguments
+AUTO_DEPLOY=false
+if [[ "$1" == "-y" || "$1" == "--yes" ]]; then
+    AUTO_DEPLOY=true
+fi
 
 echo -e "${GREEN}========================================${NC}"
 echo -e "${GREEN}Emobile Hospital Deployment Script${NC}"
@@ -41,6 +48,9 @@ html_files=(
     "appointment.html"
     "gallery.html"
     "blog.html"
+    "blog-admin.html"
+    "blog-post.html"
+    "submit-post.html"
 )
 
 for file in "${html_files[@]}"; do
@@ -93,17 +103,25 @@ echo -e "    - Images: $(find "$PUBLIC_DIR/assets/images" -type f 2>/dev/null | 
 echo -e "    - Favicons: $(find "$PUBLIC_DIR/assets/images/favicon" -type f 2>/dev/null | wc -l | tr -d ' ')"
 echo -e "${GREEN}✓ All files prepared for deployment${NC}\n"
 
-# Step 6: Ask to deploy
-echo -e "${YELLOW}Ready to deploy to Firebase?${NC}"
-read -p "Deploy now? (y/n) " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    echo -e "\n${YELLOW}Deploying to Firebase...${NC}"
+# Step 6: Deploy to Firebase
+if [ "$AUTO_DEPLOY" = true ]; then
+    echo -e "${YELLOW}Deploying to Firebase...${NC}"
     firebase deploy
     echo -e "\n${GREEN}========================================${NC}"
     echo -e "${GREEN}✓ Deployment completed successfully!${NC}"
     echo -e "${GREEN}========================================${NC}"
 else
-    echo -e "\n${YELLOW}Deployment skipped. Files are ready in the public directory.${NC}"
-    echo -e "${YELLOW}Run 'firebase deploy' manually when ready.${NC}"
+    echo -e "${YELLOW}Ready to deploy to Firebase?${NC}"
+    read -p "Deploy now? (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo -e "\n${YELLOW}Deploying to Firebase...${NC}"
+        firebase deploy
+        echo -e "\n${GREEN}========================================${NC}"
+        echo -e "${GREEN}✓ Deployment completed successfully!${NC}"
+        echo -e "${GREEN}========================================${NC}"
+    else
+        echo -e "\n${YELLOW}Deployment skipped. Files are ready in the public directory.${NC}"
+        echo -e "${YELLOW}Run 'firebase deploy' manually when ready.${NC}"
+    fi
 fi

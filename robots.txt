@@ -1,0 +1,6 @@
+# Robots.txt for Emobile Specialist Hospital
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.emobilespecialisthospital.health/sitemap.xml

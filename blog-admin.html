@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Admin - Emobile Specialist Hospital</title>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Login Section */
+        #loginSection {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .login-card h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #E31B23;
+        }
+
+        .login-card p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #00A3E0;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 15px;
+            background: #00A3E0;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #0087c0;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        /* Admin Dashboard */
+        #adminDashboard {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #E31B23;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-email {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .btn-logout {
+            padding: 10px 20px;
+            background: #E31B23;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-logout:hover {
+            background: #c01820;
+        }
+
+        .admin-container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 40px;
+        }
+
+        .editor-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .editor-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-row-full {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #00A3E0;
+        }
+
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            background: white;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #00A3E0;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn-save {
+            flex: 1;
+            padding: 15px;
+            background: #00A3E0;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-save:hover {
+            background: #0087c0;
+        }
+
+        .btn-cancel {
+            padding: 15px 30px;
+            background: #f5f5f5;
+            color: #333;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-cancel:hover {
+            background: #e0e0e0;
+        }
+
+        /* Posts List */
+        .posts-list-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .posts-list-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .posts-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .posts-table th {
+            text-align: left;
+            padding: 15px;
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .posts-table td {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .posts-table tr:hover {
+            background: #fafafa;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-published {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-draft {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-edit, .btn-delete {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-edit {
+            background: #00A3E0;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background: #0087c0;
+        }
+
+        .btn-delete {
+            background: #E31B23;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #c01820;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .tab-btn:hover {
+            color: #333;
+        }
+
+        .tab-btn.active {
+            color: #00A3E0;
+            border-bottom-color: #00A3E0;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .empty-state h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            color: #999;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .posts-table {
+                font-size: 0.9rem;
+            }
+
+            .posts-table th,
+            .posts-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Section -->
+    <div id="loginSection">
+        <div class="login-card">
+            <h1>Blog Admin</h1>
+            <p>Emobile Specialist Hospital</p>
+
+            <div id="loginError" class="error-message"></div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="admin@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+
+                <button type="submit" class="btn-primary" id="loginBtn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard">
+        <div class="admin-header">
+            <h1>📝 Blog CMS</h1>
+            <div class="user-info">
+                <span class="user-email" id="userEmail"></span>
+                <button id="logoutBtn" class="btn-logout">Logout</button>
+            </div>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div style="background: white; padding: 0 40px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);">
+            <div class="tabs">
+                <button id="postsTab" class="tab-btn active" onclick="showTab('posts')">Published Posts</button>
+                <button id="submissionsTab" class="tab-btn" onclick="showTab('submissions')">Pending Submissions</button>
+            </div>
+        </div>
+
+        <!-- Posts Content Tab -->
+        <div id="postsContent" class="tab-content active">
+        <div class="admin-container">
+            <!-- Editor Section -->
+            <div class="editor-section">
+                <h2 id="formTitle">Create New Post</h2>
+
+                <form id="blogPostForm">
+                    <input type="hidden" id="postId" name="postId">
+
+                    <div class="form-group">
+                        <label for="title">Title *</label>
+                        <input type="text" id="title" name="title" required maxlength="200" placeholder="Enter post title">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="excerpt">Excerpt (Short Description) *</label>
+                        <textarea id="excerpt" name="excerpt" required maxlength="500" rows="3" placeholder="Brief description of the post"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="category">Category *</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select category</option>
+                                <option value="Fertility">Fertility</option>
+                                <option value="Women's Health">Women's Health</option>
+                                <option value="IVF">IVF</option>
+                                <option value="Pregnancy">Pregnancy</option>
+                                <option value="Physicians">Physicians</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Publication Date *</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">Image Path (optional)</label>
+                        <input type="text" id="image" name="image" maxlength="500" placeholder="/assets/images/blog/post-image.jpg">
+                        <small style="color: #999; display: block; margin-top: 5px;">Example: /assets/images/blog/fertility-tips.jpg</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="content">Content (HTML allowed) *</label>
+                        <textarea id="content" name="content" required maxlength="50000" rows="15" placeholder="Write your blog post content here. HTML tags are allowed."></textarea>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="published" name="published">
+                        <label for="published" style="margin: 0; font-weight: 600;">Publish immediately</label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-save" id="saveBtn">Create Post</button>
+                        <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Posts List Section -->
+            <div class="posts-list-section">
+                <h2>All Posts</h2>
+                <div id="postsListContainer">
+                    <div class="loading">Loading posts...</div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- End Posts Content Tab -->
+
+        <!-- Submissions Content Tab -->
+        <div id="submissionsContent" class="tab-content">
+            <div style="padding: 40px; max-width: 1400px; margin: 0 auto;">
+                <div class="posts-list-section">
+                    <h2>Pending Submissions</h2>
+                    <div id="submissionsListContainer">
+                        <div class="loading">Loading submissions...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Submissions Content Tab -->
+
+    </div>
+
+    <script>
+        // =====================================================================
+        // FIREBASE CONFIGURATION
+        // =====================================================================
+
+        // Firebase configuration for Emobile Hospital
+        const firebaseConfig = {
+            apiKey: "AIzaSyANQFFoD38q2MaAK8WrOtVrxY--1-bCXWc",
+            authDomain: "emobile-7372c.firebaseapp.com",
+            projectId: "emobile-7372c",
+            storageBucket: "emobile-7372c.firebasestorage.app",
+            messagingSenderId: "625039136384",
+            appId: "1:625039136384:web:8f55a2a267bdf6a56df865",
+            measurementId: "G-TW8ZY2R8V0"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // API Endpoints
+        const API_BASE = 'https://us-central1-emobile-7372c.cloudfunctions.net';
+
+        // =====================================================================
+        // AUTHENTICATION
+        // =====================================================================
+
+        // Auth state observer
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                // User is signed in
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+                document.getElementById('userEmail').textContent = user.email;
+                loadPosts();
+            } else {
+                // User is signed out
+                document.getElementById('loginSection').style.display = 'flex';
+                document.getElementById('adminDashboard').style.display = 'none';
+            }
+        });
+
+        // Login handler
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('loginBtn');
+            const errorDiv = document.getElementById('loginError');
+
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Logging in...';
+            errorDiv.style.display = 'none';
+
+            try {
+                await auth.signInWithEmailAndPassword(email, password);
+            } catch (error) {
+                console.error('Login error:', error);
+                errorDiv.textContent = 'Login failed: ' + error.message;
+                errorDiv.style.display = 'block';
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Login';
+            }
+        });
+
+        // Logout handler
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            auth.signOut();
+        });
+
+        // =====================================================================
+        // BLOG POST CRUD OPERATIONS
+        // =====================================================================
+
+        // Get ID Token helper
+        async function getIdToken() {
+            const user = auth.currentUser;
+            if (!user) throw new Error('Not authenticated');
+            return await user.getIdToken();
+        }
+
+        // Load all posts (admin view - includes unpublished)
+        async function loadPosts() {
+            const container = document.getElementById('postsListContainer');
+            container.innerHTML = '<div class="loading">Loading posts...</div>';
+
+            try {
+                const idToken = await getIdToken();
+                const response = await fetch(`${API_BASE}/getAdminBlogPosts`, {
+                    headers: {
+                        'Authorization': `Bearer ${idToken}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch posts');
+                }
+
+                const posts = await response.json();
+                renderPostsList(posts);
+            } catch (error) {
+                console.error('Error loading posts:', error);
+                container.innerHTML = `<div class="error-message" style="display:block;">Failed to load posts: ${error.message}</div>`;
+            }
+        }
+
+        // Render posts list
+        function renderPostsList(posts) {
+            const container = document.getElementById('postsListContainer');
+
+            if (!posts || posts.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📄</div>
+                        <h3>No posts yet</h3>
+                        <p>Create your first blog post using the form above!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = `
+                <table class="posts-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${posts.map(post => `
+                            <tr>
+                                <td><strong>${escapeHtml(post.title)}</strong></td>
+                                <td>${escapeHtml(post.category)}</td>
+                                <td>${new Date(post.date).toLocaleDateString()}</td>
+                                <td>
+                                    <span class="status-badge ${post.published ? 'status-published' : 'status-draft'}">
+                                        ${post.published ? 'Published' : 'Draft'}
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="post-actions">
+                                        <button class="btn-edit" onclick="editPost('${post.id}')">Edit</button>
+                                        <button class="btn-delete" onclick="deletePost('${post.id}', '${escapeHtml(post.title)}')">Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // Create or Update Post
+        document.getElementById('blogPostForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const postId = document.getElementById('postId').value;
+            const isUpdate = !!postId;
+            const saveBtn = document.getElementById('saveBtn');
+
+            saveBtn.disabled = true;
+            saveBtn.textContent = isUpdate ? 'Updating...' : 'Creating...';
+
+            const formData = {
+                title: document.getElementById('title').value,
+                excerpt: document.getElementById('excerpt').value,
+                content: document.getElementById('content').value,
+                category: document.getElementById('category').value,
+                image: document.getElementById('image').value || '',
+                date: document.getElementById('date').value,
+                published: document.getElementById('published').checked
+            };
+
+            if (isUpdate) {
+                formData.postId = postId;
+            }
+
+            try {
+                const idToken = await getIdToken();
+                const endpoint = isUpdate ? 'updateBlogPost' : 'createBlogPost';
+                const method = isUpdate ? 'PUT' : 'POST';
+
+                const response = await fetch(`${API_BASE}/${endpoint}`, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${idToken}`
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert(isUpdate ? 'Post updated successfully!' : 'Post created successfully!');
+                    resetForm();
+                    loadPosts();
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Error saving post:', error);
+                alert('Network error: ' + error.message);
+            } finally {
+                saveBtn.disabled = false;
+                saveBtn.textContent = isUpdate ? 'Update Post' : 'Create Post';
+            }
+        });
+
+        // Edit Post
+        async function editPost(postId) {
+            try {
+                const idToken = await getIdToken();
+                const response = await fetch(`${API_BASE}/getAdminBlogPosts`, {
+                    headers: {
+                        'Authorization': `Bearer ${idToken}`
+                    }
+                });
+
+                const posts = await response.json();
+                const post = posts.find(p => p.id === postId);
+
+                if (!post) {
+                    alert('Post not found');
+                    return;
+                }
+
+                // Populate form
+                document.getElementById('postId').value = post.id;
+                document.getElementById('formTitle').textContent = 'Edit Post';
+                document.getElementById('title').value = post.title;
+                document.getElementById('excerpt').value = post.excerpt;
+                document.getElementById('content').value = post.content;
+                document.getElementById('category').value = post.category;
+                document.getElementById('image').value = post.image || '';
+                document.getElementById('date').value = post.date.split('T')[0];
+                document.getElementById('published').checked = post.published;
+                document.getElementById('saveBtn').textContent = 'Update Post';
+
+                // Scroll to form
+                document.querySelector('.editor-section').scrollIntoView({ behavior: 'smooth' });
+            } catch (error) {
+                console.error('Error loading post:', error);
+                alert('Failed to load post: ' + error.message);
+            }
+        }
+
+        // Delete Post
+        async function deletePost(postId, title) {
+            if (!confirm(`Are you sure you want to delete "${title}"?`)) {
+                return;
+            }
+
+            try {
+                const idToken = await getIdToken();
+                const response = await fetch(`${API_BASE}/deleteBlogPost`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${idToken}`
+                    },
+                    body: JSON.stringify({ postId })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Post deleted successfully!');
+                    loadPosts();
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Error deleting post:', error);
+                alert('Network error: ' + error.message);
+            }
+        }
+
+        // Cancel/Reset Form
+        document.getElementById('cancelBtn').addEventListener('click', resetForm);
+
+        function resetForm() {
+            document.getElementById('blogPostForm').reset();
+            document.getElementById('postId').value = '';
+            document.getElementById('formTitle').textContent = 'Create New Post';
+            document.getElementById('saveBtn').textContent = 'Create Post';
+        }
+
+        // Set today's date as default
+        document.getElementById('date').valueAsDate = new Date();
+
+        // Utility: Escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // =====================================================================
+        // SUBMISSIONS MANAGEMENT
+        // =====================================================================
+
+        // Tab switching
+        function showTab(tab) {
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tab + 'Tab').classList.add('active');
+
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tab + 'Content').classList.add('active');
+
+            // Load data if needed
+            if (tab === 'submissions') {
+                loadSubmissions();
+            }
+        }
+
+        // Load pending submissions
+        async function loadSubmissions() {
+            const container = document.getElementById('submissionsListContainer');
+            container.innerHTML = '<div class="loading">Loading submissions...</div>';
+
+            try {
+                const idToken = await getIdToken();
+                const response = await fetch(`${API_BASE}/getPendingSubmissions`, {
+                    headers: {
+                        'Authorization': `Bearer ${idToken}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch submissions');
+                }
+
+                const submissions = await response.json();
+                renderSubmissionsList(submissions);
+            } catch (error) {
+                console.error('Error loading submissions:', error);
+                container.innerHTML = `<div class="error-message" style="display:block;">Failed to load submissions: ${error.message}</div>`;
+            }
+        }
+
+        // Render submissions list
+        function renderSubmissionsList(submissions) {
+            const container = document.getElementById('submissionsListContainer');
+
+            // Filter only pending submissions
+            const pending = submissions.filter(s => s.status === 'pending');
+
+            if (!pending || pending.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📭</div>
+                        <h3>No pending submissions</h3>
+                        <p>All submissions have been reviewed!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = `
+                <table class="posts-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Category</th>
+                            <th>Submitted</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${pending.map(submission => `
+                            <tr>
+                                <td>
+                                    <strong>${escapeHtml(submission.title)}</strong>
+                                    <br>
+                                    <small style="color: #999;">${escapeHtml(submission.excerpt.substring(0, 80))}...</small>
+                                </td>
+                                <td>
+                                    ${escapeHtml(submission.authorName)}
+                                    <br>
+                                    <small style="color: #999;">${escapeHtml(submission.authorEmail)}</small>
+                                </td>
+                                <td>${escapeHtml(submission.category)}</td>
+                                <td>${new Date(submission.submittedAt).toLocaleDateString()}</td>
+                                <td>
+                                    <div class="post-actions">
+                                        <button class="btn-edit" onclick="viewSubmission('${submission.id}')">Review</button>
+                                        <button class="btn-save" onclick="approveSubmission('${submission.id}', '${escapeHtml(submission.title)}')">Approve</button>
+                                        <button class="btn-delete" onclick="rejectSubmission('${submission.id}', '${escapeHtml(submission.title)}')">Reject</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // View submission details
+        async function viewSubmission(submissionId) {
+            try {
+                const idToken = await getIdToken();
+                const response = await fetch(`${API_BASE}/getPendingSubmissions`, {
+                    headers: {
+                        'Authorization': `Bearer ${idToken}`
+                    }
+                });
+
+                const submissions = await response.json();
+                const submission = submissions.find(s => s.id === submissionId);
+
+                if (!submission) {
+                    alert('Submission not found');
+                    return;
+                }
+
+                // Show modal or alert with full details
+                const details = `Title: ${submission.title}
+
+Author: ${submission.authorName}
+Email: ${submission.authorEmail}
+
+Category: ${submission.category}
+${submission.image ? 'Image: ' + submission.image : 'No image provided'}
+
+Excerpt:
+${submission.excerpt}
+
+Content:
+${submission.content}
+
+Submitted: ${new Date(submission.submittedAt).toLocaleString()}`;
+
+                alert(details);
+            } catch (error) {
+                console.error('Error viewing submission:', error);
+                alert('Failed to load submission details: ' + error.message);
+            }
+        }
+
+        // Approve submission
+        async function approveSubmission(submissionId, title) {
+            if (!confirm(`Approve and publish "${title}"?`)) {
+                return;
+            }
+
+            try {
+                const idToken = await getIdToken();
+                const response = await fetch(`${API_BASE}/approveSubmission`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${idToken}`
+                    },
+                    body: JSON.stringify({ submissionId })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Submission approved and published successfully!');
+                    loadSubmissions();
+                    loadPosts(); // Refresh posts list
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Error approving submission:', error);
+                alert('Network error: ' + error.message);
+            }
+        }
+
+        // Reject submission
+        async function rejectSubmission(submissionId, title) {
+            const reason = prompt(`Why are you rejecting "${title}"?`, '');
+
+            if (reason === null) {
+                return; // User cancelled
+            }
+
+            try {
+                const idToken = await getIdToken();
+                const response = await fetch(`${API_BASE}/rejectSubmission`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${idToken}`
+                    },
+                    body: JSON.stringify({ submissionId, reason })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Submission rejected successfully!');
+                    loadSubmissions();
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Error rejecting submission:', error);
+                alert('Network error: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>

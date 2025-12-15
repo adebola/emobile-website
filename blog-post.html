@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post - Emobile Specialist Hospital</title>
+    <meta name="description" content="Read expert insights on fertility, women's health, and reproductive medicine from Emobile Specialist Hospital.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/images/favicon/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/favicon/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon.png">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMJ9YX61Y7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-TMJ9YX61Y7');
+    </script>
+
+    <style>
+        .breadcrumb {
+            padding: 40px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .breadcrumb a {
+            color: var(--blue-primary);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .post-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        .post-header {
+            margin-bottom: 40px;
+        }
+        .post-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        .category-badge {
+            background: var(--sky-soft);
+            color: var(--blue-dark);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .post-date {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .post-title {
+            font-size: 3rem;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        .post-excerpt {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .post-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+        .post-content {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-dark);
+        }
+        .post-content h2 {
+            font-size: 2rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        .post-content h3 {
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        .post-content p {
+            margin-bottom: 20px;
+        }
+        .post-content ul, .post-content ol {
+            margin-bottom: 20px;
+            padding-left: 30px;
+        }
+        .post-content li {
+            margin-bottom: 10px;
+        }
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .post-content blockquote {
+            border-left: 4px solid var(--blue-primary);
+            padding: 20px 30px;
+            margin: 30px 0;
+            background: var(--cream);
+            border-radius: 10px;
+            font-style: italic;
+        }
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: var(--blue-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-top: 50px;
+            transition: all 0.3s;
+        }
+        .back-to-blog:hover {
+            background: var(--blue-dark);
+            transform: translateX(-5px);
+        }
+        .loading-state {
+            text-align: center;
+            padding: 100px 40px;
+        }
+        .loading-state p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+        .error-state {
+            text-align: center;
+            padding: 100px 40px;
+        }
+        .error-state h2 {
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        .error-state p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+        @media (max-width: 768px) {
+            .post-title {
+                font-size: 2rem;
+            }
+            .post-excerpt {
+                font-size: 1.1rem;
+            }
+            .post-content {
+                font-size: 1rem;
+            }
+            .breadcrumb {
+                padding: 30px 20px 10px;
+            }
+            .post-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating shapes background -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="assets/images/logo/emobile-logo.png" alt="Emobile Specialist Hospital Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="logo-text">
+                    <span>Emobile</span>
+                    <span>Specialist Hospital</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="foundation.html">The ECI Foundation</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="blog.html" style="color: var(--red-primary);">Blog</a></li>
+                </ul>
+            </nav>
+            <a href="appointment.html" class="cta-btn">Make An Appointment</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Loading State -->
+    <div id="loadingState" class="loading-state" style="display: none; min-height: 60vh;">
+        <p>Loading blog post...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="errorState" class="error-state" style="display: none; min-height: 60vh;">
+        <h2>404 - Post Not Found</h2>
+        <p>Sorry, the blog post you're looking for doesn't exist or has been removed.</p>
+        <a href="blog.html" class="back-to-blog">← Back to Blog</a>
+    </div>
+
+    <!-- Post Content -->
+    <div id="postContent" style="display: none; background: var(--warm-white); min-height: 60vh; padding-top: 100px; padding-bottom: 80px;">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="blog.html">Blog</a>
+            <span>/</span>
+            <span id="breadcrumbTitle">Post Title</span>
+        </div>
+
+        <!-- Post Container -->
+        <div class="post-container">
+            <article class="post-header">
+                <div class="post-meta">
+                    <span id="postCategory" class="category-badge">Category</span>
+                    <span id="postDate" class="post-date">Date</span>
+                </div>
+                <h1 id="postTitle" class="post-title">Post Title</h1>
+                <p id="postExcerpt" class="post-excerpt">Post excerpt</p>
+            </article>
+
+            <img id="postImage" class="post-image" src="" alt="" style="display: none;">
+
+            <div id="postBody" class="post-content">
+                <!-- Post content will be inserted here -->
+            </div>
+
+            <a href="blog.html" class="back-to-blog">← Back to Blog</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: var(--text-dark); color: white; padding: 80px 40px 30px;">
+        <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 50px; margin-bottom: 50px;">
+            <div>
+                <div style="margin-bottom: 20px;">
+                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--red-primary); margin-bottom: 5px;">Emobile</div>
+                    <div style="font-size: 0.8rem; color: var(--blue-primary); letter-spacing: 2px; text-transform: uppercase;">Specialist Hospital</div>
+                </div>
+                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; line-height: 1.7;">Your trusted partner on the journey to parenthood and wellness. We combine world-class medical expertise with compassionate care.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Quick Links</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                    <li><a href="index.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Home</a></li>
+                    <li><a href="about.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">About Us</a></li>
+                    <li><a href="services.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Services</a></li>
+                    <li><a href="gallery.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Success Stories</a></li>
+                    <li><a href="blog.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Blog</a></li>
+                    <li><a href="contact.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Our Services</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                    <li><a href="services.html#ivf" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">IVF Treatment</a></li>
+                    <li><a href="services.html#gynaecology" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Gynaecology</a></li>
+                    <li><a href="services.html#obstetrics" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Obstetrics</a></li>
+                    <li><a href="services.html#antenatal" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Antenatal Care</a></li>
+                    <li><a href="services.html#male-infertility" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Male Infertility</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Contact Info</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                    <li style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">📞 +234 815 037 5534</li>
+                    <li style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">✉️ info@emobilespecialisthospital.health</li>
+                    <li style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">📍 Lekki Phase 1, Lagos</li>
+                    <li style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">⏰ 24/7 Available</li>
+                </ul>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">© <span id="currentYear"></span> Emobile Specialist Hospital. All rights reserved.</p>
+            <div style="display: flex; gap: 15px;">
+                <a href="https://www.instagram.com/emobilespecialisthospital?igsh=bm9uM2hzcjdneGRt" target="_blank" style="transition: opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="instagramGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#FED576;stop-opacity:1" />
+                                <stop offset="25%" style="stop-color:#F47133;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#BC3081;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#4C63D2;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="32" height="32" rx="7" fill="url(#instagramGradient)"/>
+                        <path d="M16 10.4C13.162 10.4 10.8 12.762 10.8 15.6C10.8 18.438 13.162 20.8 16 20.8C18.838 20.8 21.2 18.438 21.2 15.6C21.2 12.762 18.838 10.4 16 10.4ZM16 18.8C14.268 18.8 12.8 17.332 12.8 15.6C12.8 13.868 14.268 12.4 16 12.4C17.732 12.4 19.2 13.868 19.2 15.6C19.2 17.332 17.732 18.8 16 18.8Z" fill="white"/>
+                        <circle cx="21.6" cy="10" r="1.2" fill="white"/>
+                        <path d="M23.6 6H8.4C7.072 6 6 7.072 6 8.4V23.6C6 24.928 7.072 26 8.4 26H23.6C24.928 26 26 24.928 26 23.6V8.4C26 7.072 24.928 6 23.6 6ZM24 23.6C24 23.824 23.824 24 23.6 24H8.4C8.176 24 8 23.824 8 23.6V8.4C8 8.176 8.176 8 8.4 8H23.6C23.824 8 24 8.176 24 8.4V23.6Z" fill="white"/>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/emobilehospital/" target="_blank" style="transition: opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="7" fill="#1877F2"/>
+                        <path d="M20.5 17L21 13.5H17.5V11.25C17.5 10.25 18 9.5 19.5 9.5H21V6.5C21 6.5 19.5 6 18.5 6C15.5 6 13.5 8 13.5 11V13.5H10.5V17H13.5V26H17.5V17H20.5Z" fill="white"/>
+                    </svg>
+                </a>
+                <a href="#" style="transition: opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="7" fill="#1DA1F2"/>
+                        <path d="M24 10.5C23.4 10.8 22.8 11 22.1 11.1C22.8 10.7 23.3 10.1 23.5 9.4C22.9 9.8 22.2 10.1 21.4 10.2C20.8 9.6 19.9 9.2 19 9.2C17.1 9.2 15.6 10.7 15.6 12.6C15.6 12.9 15.6 13.1 15.7 13.3C12.9 13.2 10.4 11.9 8.7 9.9C8.4 10.4 8.2 11 8.2 11.7C8.2 13 8.9 14.1 9.9 14.7C9.3 14.7 8.7 14.5 8.2 14.3C8.2 14.3 8.2 14.3 8.2 14.4C8.2 16.1 9.4 17.5 10.9 17.8C10.6 17.9 10.3 17.9 10 17.9C9.8 17.9 9.5 17.9 9.3 17.8C9.8 19.2 11 20.2 12.5 20.2C11.3 21.2 9.8 21.7 8.2 21.7C7.9 21.7 7.6 21.7 7.4 21.7C8.9 22.7 10.7 23.3 12.6 23.3C19 23.3 22.5 18 22.5 13.1V12.6C23.2 12.1 23.8 11.4 24 10.5Z" fill="white"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/2349029981301" target="_blank" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; font-size: 2rem; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        💬
+    </a>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Get post ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+
+        // Load post on page load
+        if (postId) {
+            loadPost(postId);
+        } else {
+            showError();
+        }
+
+        async function loadPost(id) {
+            try {
+                // Show loading state
+                document.getElementById('loadingState').style.display = 'block';
+                document.getElementById('errorState').style.display = 'none';
+                document.getElementById('postContent').style.display = 'none';
+
+                // Fetch post from API
+                const response = await fetch(
+                    `https://us-central1-emobile-7372c.cloudfunctions.net/getBlogPost?id=${id}`
+                );
+
+                if (!response.ok) {
+                    throw new Error('Post not found');
+                }
+
+                const post = await response.json();
+                renderPost(post);
+            } catch (error) {
+                console.error('Error loading blog post:', error);
+                showError();
+            }
+        }
+
+        function renderPost(post) {
+            // Update page title and meta description
+            document.title = `${post.title} - Emobile Specialist Hospital`;
+            document.querySelector('meta[name="description"]').setAttribute('content', post.excerpt);
+
+            // Update breadcrumb
+            document.getElementById('breadcrumbTitle').textContent = post.title;
+
+            // Update post content
+            document.getElementById('postCategory').textContent = post.category;
+            document.getElementById('postDate').textContent = new Date(post.date).toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
+            });
+            document.getElementById('postTitle').textContent = post.title;
+            document.getElementById('postExcerpt').textContent = post.excerpt;
+            document.getElementById('postBody').innerHTML = post.content;
+
+            // Show featured image if exists
+            if (post.image) {
+                const imageElement = document.getElementById('postImage');
+                imageElement.src = post.image;
+                imageElement.alt = post.title;
+                imageElement.style.display = 'block';
+            }
+
+            // Hide loading and show content
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('postContent').style.display = 'block';
+        }
+
+        function showError() {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('postContent').style.display = 'none';
+            document.getElementById('errorState').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

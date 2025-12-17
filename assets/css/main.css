@@ -534,6 +534,89 @@
             gap: 12px;
         }
 
+        /* Hero Carousel Styles */
+        .carousel-slide {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .carousel-dot.active {
+            width: 12px !important;
+            height: 12px !important;
+            background: white !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+        }
+
+        .carousel-dot:hover {
+            background: rgba(255, 255, 255, 0.8) !important;
+            transform: scale(1.2);
+        }
+
+        /* Responsive carousel adjustments */
+        @media (max-width: 768px) {
+            .carousel-container {
+                height: 400px !important;
+            }
+
+            .carousel-dots {
+                bottom: 10px !important;
+                gap: 8px !important;
+            }
+
+            .carousel-dot {
+                width: 10px !important;
+                height: 10px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-container {
+                height: 300px !important;
+            }
+
+            .carousel-dots {
+                gap: 6px !important;
+            }
+
+            .carousel-dot {
+                width: 8px !important;
+                height: 8px !important;
+            }
+        }
+
+        /* Careers Section - Job Cards */
+        .job-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .job-card a:hover {
+            transform: translateX(2px);
+            box-shadow: 0 6px 25px rgba(227, 27, 35, 0.3);
+        }
+
+        .job-card a:hover span {
+            transform: translateX(3px);
+        }
+
         /* About Section */
         .about {
             padding: 120px 40px;
@@ -1339,6 +1422,15 @@
             section > div > div[style*="grid-template-columns"] > div > p {
                 text-align: center !important;
             }
+
+            /* Careers section specific overrides */
+            #careers [style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            .job-card {
+                padding: 30px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1422,5 +1514,14 @@
             /* Adjust image heights for very small screens */
             img[style*="height: 600px"] {
                 height: 250px !important;
+            }
+
+            /* Careers section - smaller job cards on mobile */
+            .job-card {
+                padding: 25px;
+            }
+
+            .job-card h4 {
+                font-size: 1.3rem !important;
             }
         }

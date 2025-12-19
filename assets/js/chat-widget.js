@@ -20,10 +20,10 @@
         },
         // Logo configuration
         logo: {
-            type: 'initials',
-            source: null,
-            initials: 'ES',
-            isCustom: false
+            type: 'url',
+            source: 'https://api.chatcraft.cc/api/v1/settings-logo/69577f6f-5ba1-47ee-991a-e011be582d3e',
+            initials: null,
+            isCustom: true
         },
         // Customizable text
         hoverText: 'Chat with us!',
@@ -99,16 +99,16 @@
                 }
                 
                 .factorial-chat-button-logo {
-                    width: 36px;
-                    height: 36px;
+                    width: 54px;
+                    height: 54px;
                     border-radius: 50%;
                     object-fit: cover;
                     object-position: center;
                 }
-                
+
                 .factorial-chat-button-initials {
-                    width: 36px;
-                    height: 36px;
+                    width: 54px;
+                    height: 54px;
                     border-radius: 50%;
                     background: linear-gradient(135deg, ${CONFIG.colors.primary}, ${CONFIG.colors.secondary});
                     color: ${CONFIG.colors.white};
@@ -116,7 +116,7 @@
                     align-items: center;
                     justify-content: center;
                     font-weight: bold;
-                    font-size: 14px;
+                    font-size: 20px;
                     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
                     transition: transform 0.3s ease;
                 }
@@ -475,7 +475,7 @@
             widgetContainer.innerHTML = `
                 <button class="factorial-chat-button" id="factorial-chat-toggle" title="${CONFIG.hoverText}">
                     
-                    <div class="factorial-chat-button-initials">ES</div>
+                    <img src="https://api.chatcraft.cc/api/v1/settings-logo/69577f6f-5ba1-47ee-991a-e011be582d3e" alt="Chat" class="factorial-chat-button-logo">
                     
                     <div class="factorial-status-indicator" id="factorial-status"></div>
                 </button>
